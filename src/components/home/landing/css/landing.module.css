@@ -1,0 +1,42 @@
+.landing {
+  width: 100%;
+  padding: 16rem 0rem;
+  display: grid;
+  align-content: center;
+
+  flex: 1;
+
+  background: #131313 url('../../../../assets/sources/svg/bg-landing.svg') repeat-x center;
+}
+
+.landingHeading {
+  font: 700 4rem var(--defFont);
+  color: #ffffff;
+  text-align: center;
+  position: relative;
+}
+
+.landingHeadingStrong {
+  composes: landingHeading;
+  font: 700 4rem var(--defFont);
+  color: #00c2ff;
+}
+
+.landingDescription {
+  max-width: 625px;
+  font: 400 1.5rem var(--defFont);
+  color: #ffffff;
+  text-align: center;
+  margin: auto;
+}
+
+.landingDescription > strong {
+  font: 700 1.5rem var(--defFont);
+  color: #ffffff;
+}
+
+.landingDescription > span {
+  font: 600 1.5rem var(--defFont);
+  color: #00c2ff;
+  display: inline;
+}

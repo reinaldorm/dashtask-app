@@ -1,0 +1,32 @@
+.footer {
+  width: 100%;
+  padding: 2rem 3rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: linear-gradient(180deg, #131313 0%, #101010 100%);
+}
+
+.footerNav {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.navLink {
+  font: 600 1rem var(--defFont);
+  color: #ffffff;
+  cursor: pointer;
+  padding: 0.5rem 0.5rem;
+}
+
+.navSignUp {
+  padding: 0.5rem 1rem;
+  color: #fff;
+  font: 600 1rem var(--defFont);
+  background: var(--brandBlue);
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
