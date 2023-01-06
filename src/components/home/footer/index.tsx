@@ -7,7 +7,7 @@ import styles from './css/footer.module.css';
 const Footer = () => {
   return (
     <div className={styles.footer}>
-      <NavLink to={'/landing'}>
+      <NavLink to={'/'}>
         <img
           src={assets.brand.dashtask_outlined.src}
           alt={assets.brand.dashtask_outlined.alt}

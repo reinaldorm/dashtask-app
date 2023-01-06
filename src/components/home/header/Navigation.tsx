@@ -9,7 +9,7 @@ const Navigation = () => {
     <nav className={styles.headerNav}>
       <NavLink
         className={styles.navLink}
-        to={'/landing'}>
+        to={'/'}>
         Home
       </NavLink>
       {(location.pathname === '/register' && (

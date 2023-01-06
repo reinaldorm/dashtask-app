@@ -5,15 +5,9 @@ import assets from '../../../assets/components/home';
 import styles from './css/header.module.css';
 
 const Header = () => {
-  const location = useLocation();
-
-  React.useEffect(() => {
-    console.log(location);
-  }, []);
-
   return (
     <div className={styles.header}>
-      <NavLink to={'/landing'}>
+      <NavLink to={'/'}>
         <img
           src={assets.brand.dashtask.src}
           alt={assets.brand.dashtask.alt}

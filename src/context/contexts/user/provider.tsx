@@ -1,5 +1,5 @@
 import React from 'react';
-import { createUserWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
 import { FirebaseContext, FirebaseProps } from '../firebase/context';
 import Provider from './context';
@@ -16,7 +16,7 @@ const UserProvider = ({ children }: UserProviderProps) => {
     setUser(auth.currentUser);
   });
 
-  const userCreate = async (username: string, email: string, password: string) => {
+  const userSignUp = async (username: string, email: string, password: string) => {
     const { user } = await createUserWithEmailAndPassword(auth, email, password);
     setDoc(doc(db, 'users', user.uid), {
       username,
@@ -25,15 +25,15 @@ const UserProvider = ({ children }: UserProviderProps) => {
     });
   };
 
+  const userSignIn = async (email: string, password: string) => {
+    signInWithEmailAndPassword(auth, email, password);
+  };
+
   const userSignOut = () => {
     signOut(auth);
   };
 
-  React.useEffect(() => {
-    console.log(auth.currentUser);
-  }, [user]);
-
-  return <Provider value={{ userCreate, userSignOut }}>{children}</Provider>;
+  return <Provider value={{ userSignUp, userSignIn, userSignOut, user }}>{children}</Provider>;
 };
 
 export default UserProvider;

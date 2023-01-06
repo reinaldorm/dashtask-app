@@ -1,8 +1,11 @@
+import { User } from 'firebase/auth';
 import React from 'react';
 
 export interface UserProps {
-  userCreate: (username: string, email: string, password: string) => void;
+  userSignUp: (username: string, email: string, password: string) => Promise<void>;
+  userSignIn: (email: string, password: string) => Promise<void>;
   userSignOut: () => void;
+  user: User | null;
 }
 
 export const UserContext = React.createContext<UserProps | null>(null);

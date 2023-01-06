@@ -1,4 +1,4 @@
-.signup {
+.signin {
   width: 100%;
   flex: 1;
   padding: 4rem 16rem;
@@ -98,7 +98,7 @@
   cursor: pointer;
 }
 
-.formRegisterSubmit {
+.formLoginSubmit {
   width: 100%;
   align-items: center;
   flex: 1;
@@ -118,7 +118,7 @@
   align-items: center;
   justify-content: center;
 
-  background: linear-gradient(134.71deg, #0f0f0f 0.02%, rgba(15, 15, 15, 0.43) 99.98%);
+  background: linear-gradient(-145deg, #0f0f0f 0.02%, rgba(15, 15, 15, 0.43) 99.98%);
   backdrop-filter: blur(0.25rem);
 }
 

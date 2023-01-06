@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Playground from './components/playground';
 import FirebaseProvider from './context/contexts/firebase/provider';
 import TasksProvider from './context/contexts/tasks/provider';
 import UserProvider from './context/contexts/user/provider';
 import StoreProvider from './context/provider';
+import Dashboard from './pages/dashboard';
 import Home from './pages/home';
 
 function App() {
@@ -16,12 +16,12 @@ function App() {
             <StoreProvider>
               <Routes>
                 <Route
-                  path="/*"
+                  path='/*'
                   element={<Home />}
                 />
                 <Route
-                  path="/playground"
-                  element={<Playground />}
+                  path='/dashboard/*'
+                  element={<Dashboard />}
                 />
               </Routes>
             </StoreProvider>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { StoreContext, StoreProps } from '../../context/context';
 import Footer from '../../components/home/footer';
 import Header from '../../components/home/header';
 import Landing from '../../components/home/landing';
@@ -8,14 +9,12 @@ import SignUp from '../../components/home/signup';
 import styles from './css/home.module.css';
 
 const Home = () => {
-  const [section, setSection] = React.useState(0);
-
   return (
     <div className={styles.home}>
       <Header />
       <Routes>
         <Route
-          path='landing'
+          path='/'
           element={<Landing />}
         />
         <Route
@@ -31,5 +30,4 @@ const Home = () => {
     </div>
   );
 };
-
 export default Home;
