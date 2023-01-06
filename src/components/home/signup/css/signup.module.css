@@ -1,0 +1,11 @@
+.signup {
+  width: 100%;
+  padding: 2rem 0rem;
+  display: grid;
+  align-content: center;
+
+  flex: 1;
+
+  background: var(--brandBlue) url('../../../../assets/sources/svg/bg-auth.svg') repeat-x center /
+    cover;
+}

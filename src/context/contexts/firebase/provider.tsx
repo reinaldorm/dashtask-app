@@ -1,6 +1,7 @@
 import React from 'react';
 import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+import { browserLocalPersistence, getAuth, setPersistence } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
 import Provider from './context';
 
 interface FirebaseProviderProps {
@@ -20,8 +21,10 @@ const FirebaseProvider = ({ children }: FirebaseProviderProps) => {
 
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
+  const db = getFirestore(app);
+  setPersistence(auth, browserLocalPersistence);
 
-  return <Provider value={{ app, auth }}>{children}</Provider>;
+  return <Provider value={{ app, auth, db }}>{children}</Provider>;
 };
 
 export default FirebaseProvider;
