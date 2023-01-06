@@ -1,9 +1,8 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import FirebaseProvider from './context/contexts/firebase/provider';
-import TasksProvider from './context/contexts/tasks/provider';
-import UserProvider from './context/contexts/user/provider';
-import StoreProvider from './context/provider';
+import { BrowserRouter, Routes, Route, Router } from 'react-router-dom';
+import FirebaseProvider from './context/firebase/provider';
+import TasksProvider from './context/tasks/provider';
+import UserProvider from './context/user/provider';
 import Dashboard from './pages/dashboard';
 import Home from './pages/home';
 
@@ -12,20 +11,20 @@ function App() {
     <BrowserRouter>
       <FirebaseProvider>
         <UserProvider>
-          <TasksProvider>
-            <StoreProvider>
-              <Routes>
-                <Route
-                  path='/*'
-                  element={<Home />}
-                />
-                <Route
-                  path='/dashboard/*'
-                  element={<Dashboard />}
-                />
-              </Routes>
-            </StoreProvider>
-          </TasksProvider>
+          <Routes>
+            <Route
+              path="/*"
+              element={<Home />}
+            />
+            <Route
+              path="/dashboard/*"
+              element={
+                <TasksProvider>
+                  <Dashboard />
+                </TasksProvider>
+              }
+            />
+          </Routes>
         </UserProvider>
       </FirebaseProvider>
     </BrowserRouter>

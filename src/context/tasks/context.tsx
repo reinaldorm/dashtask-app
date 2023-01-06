@@ -1,7 +1,7 @@
 import React from 'react';
 
 export interface TasksProps {
-  tasks: number;
+  tasks: Array<TaskInterface> | null;
 }
 
 export const TasksContext = React.createContext<TasksProps | null>(null);

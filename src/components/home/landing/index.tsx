@@ -1,10 +1,7 @@
 import React from 'react';
 import styles from './css/landing.module.css';
-import { StoreContext, StoreProps } from '../../../context/context';
 
 const Landing = () => {
-  const { user } = React.useContext(StoreContext) as StoreProps;
-
   return (
     <div className={styles.landing}>
       <h1 className={styles.landingHeading}>

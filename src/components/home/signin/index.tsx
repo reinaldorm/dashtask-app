@@ -1,15 +1,15 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { StoreContext, StoreProps } from '../../../context/context';
+import { UserContext, UserProps } from '../../../context/user/context';
 import styles from './css/signin.module.css';
 import Form from './Form';
 
 const SignIn = () => {
-  const { user } = React.useContext(StoreContext) as StoreProps;
+  const { user } = React.useContext(UserContext) as UserProps;
   const navigate = useNavigate();
 
   React.useEffect(() => {
-    if (user.user) navigate('/dashboard');
+    if (user) navigate('/dashboard');
   });
 
   return (

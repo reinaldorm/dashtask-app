@@ -1,6 +1,5 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { StoreContext, StoreProps } from '../../context/context';
 import Footer from '../../components/home/footer';
 import Header from '../../components/home/header';
 import Landing from '../../components/home/landing';
@@ -14,15 +13,15 @@ const Home = () => {
       <Header />
       <Routes>
         <Route
-          path='/'
+          path="/"
           element={<Landing />}
         />
         <Route
-          path='login'
+          path="login"
           element={<SignIn />}
         />
         <Route
-          path='register'
+          path="register"
           element={<SignUp />}
         />
       </Routes>

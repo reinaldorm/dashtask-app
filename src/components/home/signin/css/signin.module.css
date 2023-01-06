@@ -4,7 +4,8 @@
   padding: 4rem 16rem;
   display: grid;
 
-  background: var(--brandBlue) url('../../../../assets/sources/svg/bg-auth.svg') repeat-x center / cover;
+  background: var(--brandBlue) url('../../../../assets/sources/svg/bg-auth.svg') repeat-x center /
+    cover;
 }
 
 .form {
@@ -112,7 +113,6 @@
 }
 
 .formArt {
-  padding: 2rem 4rem;
   flex: 1;
   display: flex;
   align-items: center;
@@ -123,5 +123,5 @@
 }
 
 .formArt img {
-  max-width: 100%;
+  max-width: 60%;
 }

@@ -1,6 +1,6 @@
 import React, { FormEvent } from 'react';
 import gsap from 'gsap';
-import { StoreContext, StoreProps } from '../../../context/context';
+import { UserContext, UserProps } from '../../../context/user/context';
 import FormHeading from './FormHeading';
 import FormInput from './FormInput';
 import FormSignIn from './FormSignIn';
@@ -8,7 +8,7 @@ import useInput from '../../../hooks/useInput';
 import styles from './css/signin.module.css';
 
 const FormInputs = () => {
-  const { user } = React.useContext(StoreContext) as StoreProps;
+  const { userSignIn } = React.useContext(UserContext) as UserProps;
   const email = useInput({ type: 'email' });
   const password = useInput({ type: 'password' });
 
@@ -16,7 +16,7 @@ const FormInputs = () => {
     event.preventDefault();
     if (email.validate() && password.validate()) {
       try {
-        await user.userSignIn(email.value, password.value);
+        await userSignIn(email.value, password.value);
       } catch (err) {
         throw new Error('something gone wrong');
       }
@@ -35,17 +35,17 @@ const FormInputs = () => {
       className={styles.formInputs}>
       <FormHeading />
       <FormInput
-        legend='Email'
-        label='Email'
-        name='email'
-        type='email'
+        legend="Email"
+        label="Email"
+        name="email"
+        type="email"
         value={email}
       />
       <FormInput
-        legend='Password'
-        label='Password'
-        name='password'
-        type='password'
+        legend="Password"
+        label="Password"
+        name="password"
+        type="password"
         value={password}
       />
       <FormSignIn />
