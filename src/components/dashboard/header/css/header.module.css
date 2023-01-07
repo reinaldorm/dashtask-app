@@ -1,0 +1,14 @@
+.header {
+  padding: 3rem;
+
+  display: flex;
+  justify-content: space-between;
+
+  grid-column: 2 / -1;
+  grid-row: 1 / 2;
+}
+
+.legend {
+  font: 700 2rem var(--defFont);
+  color: #fff;
+}

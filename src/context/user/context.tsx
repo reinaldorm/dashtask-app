@@ -5,7 +5,7 @@ export interface UserProps {
   userSignUp: (username: string, email: string, password: string) => Promise<void>;
   userSignIn: (email: string, password: string) => Promise<void>;
   userSignOut: () => void;
-  user: User | null;
+  user: User | null | 1;
 }
 
 export const UserContext = React.createContext<UserProps | null>(null);

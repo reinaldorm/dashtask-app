@@ -16,13 +16,13 @@ interface UserProviderProps {
 
 const UserProvider = ({ children }: UserProviderProps) => {
   const { auth, db } = React.useContext(FirebaseContext) as FirebaseProps;
-  const [user, setUser] = React.useState<User | null>(null);
+  const [user, setUser] = React.useState<User | null | 1>(1);
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
       setUser(auth.currentUser);
     } else {
-      setUser(null)
+      setUser(null);
     }
   });
 
@@ -54,6 +54,10 @@ const UserProvider = ({ children }: UserProviderProps) => {
   const userSignOut = () => {
     signOut(auth);
   };
+
+  React.useEffect(() => {
+    console.log(user);
+  }, [user]);
 
   return <Provider value={{ userSignUp, userSignIn, userSignOut, user }}>{children}</Provider>;
 };

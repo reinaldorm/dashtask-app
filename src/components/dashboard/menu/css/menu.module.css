@@ -1,0 +1,54 @@
+.menu {
+  isolation: auto;
+  grid-column: 1 / 2;
+  grid-row: 1 / -1;
+  background: #181717;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding: 3rem;
+}
+
+.brand {
+  padding: 0.625rem;
+  cursor: pointer;
+}
+
+.navigation {
+  flex: 1;
+  padding: 0.625rem;
+
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+.navigationLink {
+  padding: 0.625rem 0rem;
+
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+
+  font: 600 1rem var(--defFont);
+  color: #ffffff;
+
+  transition: opacity 0.2s ease 0s;
+  opacity: 0.5;
+}
+
+.navigationLink:global(.active) {
+  opacity: 1;
+}
+
+.logout {
+  padding: 0.625rem;
+
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+
+  font: 600 1rem var(--defFont);
+  color: #ffffff;
+  cursor: pointer;
+}
