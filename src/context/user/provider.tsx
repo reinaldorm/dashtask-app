@@ -4,6 +4,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
+  User,
 } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
 import { FirebaseContext, FirebaseProps } from '../firebase/context';
@@ -15,10 +16,14 @@ interface UserProviderProps {
 
 const UserProvider = ({ children }: UserProviderProps) => {
   const { auth, db } = React.useContext(FirebaseContext) as FirebaseProps;
-  const [user, setUser] = React.useState(auth.currentUser);
+  const [user, setUser] = React.useState<User | null>(null);
 
-  onAuthStateChanged(auth, () => {
-    setUser(auth.currentUser);
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      setUser(auth.currentUser);
+    } else {
+      setUser(null)
+    }
   });
 
   const userSignUp = async (username: string, email: string, password: string) => {
