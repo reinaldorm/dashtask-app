@@ -21,7 +21,7 @@ const UserProvider = ({ children }: UserProviderProps) => {
     await setDoc(doc(db, 'users', user.uid), {
       username,
       email,
-      task_count: 0,
+      task_count: 1,
     });
 
     await setDoc(doc(db, 'users-tasks', user.uid), {

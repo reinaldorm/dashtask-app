@@ -11,6 +11,8 @@ export interface DataProps {
     getData: () => Promise<void>;
     loading: boolean;
   };
+  location: string;
+  updateLocation: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const DataContext = React.createContext<DataProps | null>(null);

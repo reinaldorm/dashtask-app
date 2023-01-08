@@ -16,7 +16,6 @@ import styles from './css/dashboard.module.css';
 
 const Dashboard = () => {
   const { user, authenticating } = React.useContext(UserContext) as UserProps;
-  const [location, setLocation] = React.useState('Welcome');
 
   if (authenticating) {
     return <Loading />;
@@ -26,8 +25,8 @@ const Dashboard = () => {
     return (
       <div className={styles.dashboard}>
         <DataProvider user={user}>
-          <Header location={location} />
-          <Menu setLocation={setLocation} />
+          <Header />
+          <Menu />
           <Routes>
             <Route
               path='tasks'

@@ -2,15 +2,14 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './css/menu.module.css';
 import assets from '../../../assets/components/dashtask';
+import { DataContext, DataProps } from '../../../context/data/context';
 
-interface NavigationProps {
-  setLocation: React.Dispatch<React.SetStateAction<string>>;
-}
+const Navigation = () => {
+  const { updateLocation } = React.useContext(DataContext) as DataProps;
 
-const Navigation = ({ setLocation }: NavigationProps) => {
   const handleLocation = ({ currentTarget }: React.MouseEvent<HTMLAnchorElement>) => {
     if (currentTarget.textContent) {
-      setLocation(currentTarget.textContent);
+      updateLocation(currentTarget.textContent);
     }
   };
 
@@ -19,28 +18,28 @@ const Navigation = ({ setLocation }: NavigationProps) => {
       <NavLink
         onClick={handleLocation}
         className={styles.navigationLink}
-        to="home">
+        to='home'>
         <img src={assets.icons.home} />
         Home
       </NavLink>
       <NavLink
         onClick={handleLocation}
         className={styles.navigationLink}
-        to="tasks">
+        to='tasks'>
         <img src={assets.icons.tasks} />
         Tasks
       </NavLink>
       <NavLink
         onClick={handleLocation}
         className={styles.navigationLink}
-        to="add">
+        to='add'>
         <img src={assets.icons.add_rect} />
         Add
       </NavLink>
       <NavLink
         onClick={handleLocation}
         className={styles.navigationLink}
-        to="archive">
+        to='archive'>
         <img src={assets.icons.box} />
         Archive
       </NavLink>

@@ -14,13 +14,14 @@ const DataProvider = ({ user, children }: DataProviderProps) => {
   const { db } = React.useContext(FirebaseContext) as FirebaseProps;
   const userData = useUser(db, user.uid);
   const taskData = useTask(db, user.uid);
+  const [location, updateLocation] = React.useState('Welcome');
 
   React.useEffect(() => {
     console.log(userData.data);
     console.log(taskData.data);
   }, []);
 
-  return <Provider value={{ userData, taskData }}>{children}</Provider>;
+  return <Provider value={{ userData, taskData, location, updateLocation }}>{children}</Provider>;
 };
 
 export default DataProvider;

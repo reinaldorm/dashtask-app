@@ -5,11 +5,7 @@ import styles from './css/menu.module.css';
 import global from '../../../assets/components/global';
 import assets from '../../../assets/components/dashtask';
 
-interface MenuProps {
-  setLocation: React.Dispatch<React.SetStateAction<string>>;
-}
-
-const Menu = ({ setLocation }: MenuProps) => {
+const Menu = () => {
   const { userSignOut } = React.useContext(UserContext) as UserProps;
 
   const handleSignOut = ({ currentTarget }: React.MouseEvent<HTMLButtonElement>) => {
@@ -22,7 +18,7 @@ const Menu = ({ setLocation }: MenuProps) => {
       <button className={styles.brand}>
         <img src={global.brand.brand_dashtask} />
       </button>
-      <Navigation setLocation={setLocation} />
+      <Navigation />
       <button
         className={styles.logout}
         onClick={handleSignOut}>
