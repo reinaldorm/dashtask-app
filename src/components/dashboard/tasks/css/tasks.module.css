@@ -1,4 +1,59 @@
 .tasks {
+  padding: 3rem;
+
   grid-column: 2 / -1;
   grid-row: 2 / -1;
+
+  overflow-y: scroll;
+}
+
+.tasks::-webkit-scrollbar-thumb {
+  background-color: var(--brandBlue);
+  background: linear-gradient(
+    180deg,
+    #ff59f8 0%,
+    #ae72ff 19.79%,
+    #90e9ed 40.62%,
+    #5cd167 61.98%,
+    #ffee00 82.53%
+  );
+  padding: 1rem;
+}
+
+.tasks::-webkit-scrollbar-track {
+  background-color: #111;
+  padding: 1rem;
+}
+
+.tasks::-webkit-scrollbar {
+  background: #111;
+  width: 0.115rem;
+}
+
+.taskList {
+  display: flex;
+  gap: 1.5rem;
+  flex-direction: column;
+}
+
+.taskField {
+  isolation: auto;
+}
+
+.fieldHeading {
+  display: flex;
+  gap: 0.625rem;
+  align-items: center;
+  cursor: pointer;
+}
+
+.fieldHeadingLegend {
+  font: 700 1.5rem var(--defFont);
+  color: #ffffff;
+}
+
+.fieldHeadingLine {
+  flex: 1;
+  background-color: #353535;
+  height: 1px;
 }

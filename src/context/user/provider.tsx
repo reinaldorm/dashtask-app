@@ -22,6 +22,7 @@ const UserProvider = ({ children }: UserProviderProps) => {
       username,
       email,
       task_count: 1,
+      custom_tags: [],
     });
 
     await setDoc(doc(db, 'users-tasks', user.uid), {
@@ -31,9 +32,10 @@ const UserProvider = ({ children }: UserProviderProps) => {
       tasks: [
         {
           task_initial_date: Date.now(),
-          task_final_date: Date.now(),
-          task_tags: ['example'],
-          task_name: 'task-example',
+          task_final_date: Date.now() + 8.64e7,
+          task_tags: ['Health'],
+          task_name: 'First Task',
+          task_status: 1,
         },
       ],
     });
@@ -53,7 +55,11 @@ const UserProvider = ({ children }: UserProviderProps) => {
     console.log(authenticating, 'console at User Provider');
   }, [authenticating]);
 
-  return <Provider value={{ userSignUp, userSignIn, userSignOut, user, authenticating }}>{children}</Provider>;
+  return (
+    <Provider value={{ userSignUp, userSignIn, userSignOut, user, authenticating }}>
+      {children}
+    </Provider>
+  );
 };
 
 export default UserProvider;
