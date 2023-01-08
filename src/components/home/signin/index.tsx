@@ -5,12 +5,14 @@ import styles from './css/signin.module.css';
 import Form from './Form';
 
 const SignIn = () => {
-  const { user } = React.useContext(UserContext) as UserProps;
   const navigate = useNavigate();
+  const { user } = React.useContext(UserContext) as UserProps;
 
   React.useEffect(() => {
-    if (user) navigate('/dashboard');
-  });
+    if (user) {
+      navigate('/dashboard');
+    }
+  }, [user]);
 
   return (
     <div className={styles.signin}>

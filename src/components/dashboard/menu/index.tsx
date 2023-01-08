@@ -1,6 +1,5 @@
 import React from 'react';
 import { UserContext, UserProps } from '../../../context/user/context';
-import { useNavigate } from 'react-router-dom';
 import Navigation from './Navigation';
 import styles from './css/menu.module.css';
 import global from '../../../assets/components/global';
@@ -12,7 +11,6 @@ interface MenuProps {
 
 const Menu = ({ setLocation }: MenuProps) => {
   const { userSignOut } = React.useContext(UserContext) as UserProps;
-  const navigate = useNavigate();
 
   const handleSignOut = ({ currentTarget }: React.MouseEvent<HTMLButtonElement>) => {
     currentTarget.setAttribute('disabled', 'disabled');

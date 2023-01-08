@@ -1,13 +1,9 @@
 import React from 'react';
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
-  onAuthStateChanged,
-  User,
-} from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
 import { FirebaseContext, FirebaseProps } from '../firebase/context';
+import useAuth from '../../hooks/useAuth';
 import Provider from './context';
 
 interface UserProviderProps {
@@ -16,15 +12,8 @@ interface UserProviderProps {
 
 const UserProvider = ({ children }: UserProviderProps) => {
   const { auth, db } = React.useContext(FirebaseContext) as FirebaseProps;
-  const [user, setUser] = React.useState<User | null | 1>(1);
-
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      setUser(auth.currentUser);
-    } else {
-      setUser(null);
-    }
-  });
+  const { user, authenticating } = useAuth();
+  const navigate = useNavigate();
 
   const userSignUp = async (username: string, email: string, password: string) => {
     const { user } = await createUserWithEmailAndPassword(auth, email, password);
@@ -36,6 +25,9 @@ const UserProvider = ({ children }: UserProviderProps) => {
     });
 
     await setDoc(doc(db, 'users-tasks', user.uid), {
+      deleted: [],
+      archived: [],
+      completed: [],
       tasks: [
         {
           task_initial_date: Date.now(),
@@ -48,18 +40,20 @@ const UserProvider = ({ children }: UserProviderProps) => {
   };
 
   const userSignIn = async (email: string, password: string) => {
-    signInWithEmailAndPassword(auth, email, password);
+    await signInWithEmailAndPassword(auth, email, password);
+    navigate('/dashboard');
   };
 
-  const userSignOut = () => {
-    signOut(auth);
+  const userSignOut = async () => {
+    await signOut(auth);
+    navigate('/');
   };
 
   React.useEffect(() => {
-    console.log(user);
-  }, [user]);
+    console.log(authenticating, 'console at User Provider');
+  }, [authenticating]);
 
-  return <Provider value={{ userSignUp, userSignIn, userSignOut, user }}>{children}</Provider>;
+  return <Provider value={{ userSignUp, userSignIn, userSignOut, user, authenticating }}>{children}</Provider>;
 };
 
 export default UserProvider;

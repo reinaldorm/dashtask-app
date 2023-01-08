@@ -1,15 +1,16 @@
-import { DocumentData } from 'firebase/firestore';
 import React from 'react';
 
-interface Data {
-  data: DocumentData | null;
-  getData: () => Promise<void>;
-  loading: boolean;
-}
-
 export interface DataProps {
-  userData: Data;
-  taskData: Data;
+  userData: {
+    data: UserInterface | null;
+    getData: () => Promise<void>;
+    loading: boolean;
+  };
+  taskData: {
+    data: UserTaskInterface | null;
+    getData: () => Promise<void>;
+    loading: boolean;
+  };
 }
 
 export const DataContext = React.createContext<DataProps | null>(null);

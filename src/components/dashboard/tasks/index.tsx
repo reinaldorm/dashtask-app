@@ -1,19 +1,8 @@
 import React from 'react';
-import { DataContext, DataProps } from '../../../context/data/context';
 import styles from './css/tasks.module.css';
 
 const Tasks = () => {
-  const { taskData } = React.useContext(DataContext) as DataProps;
-
-  React.useEffect(() => {
-    console.log(taskData.data);
-  }, [taskData.data]);
-
-  return (
-    <div className={styles.tasks}>
-      <button onClick={() => taskData.getData()}>Update Task</button>
-    </div>
-  );
+  return <div className={styles.tasks}>Tasks</div>;
 };
 
 export default Tasks;

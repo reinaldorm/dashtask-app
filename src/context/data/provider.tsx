@@ -1,7 +1,8 @@
 import React from 'react';
 import { FirebaseContext, FirebaseProps } from '../firebase/context';
 import { User } from 'firebase/auth';
-import useData from '../../hooks/useData';
+import useUser from '../../hooks/useUser';
+import useTask from '../../hooks/useTask';
 import Provider from './context';
 
 interface DataProviderProps {
@@ -11,8 +12,13 @@ interface DataProviderProps {
 
 const DataProvider = ({ user, children }: DataProviderProps) => {
   const { db } = React.useContext(FirebaseContext) as FirebaseProps;
-  const userData = useData(db, user.uid, 'users');
-  const taskData = useData(db, user.uid, 'users-tasks');
+  const userData = useUser(db, user.uid);
+  const taskData = useTask(db, user.uid);
+
+  React.useEffect(() => {
+    console.log(userData.data);
+    console.log(taskData.data);
+  }, []);
 
   return <Provider value={{ userData, taskData }}>{children}</Provider>;
 };

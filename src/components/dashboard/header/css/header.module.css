@@ -12,3 +12,33 @@
   font: 700 2rem var(--defFont);
   color: #fff;
 }
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.addTask {
+  padding: 0.75rem;
+
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  background: var(--brandBlue);
+  border-radius: 1rem;
+  font: 600 1rem var(--defFont);
+  color: #fff;
+  cursor: pointer;
+}
+
+.userMenu {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+
+  font: 600 1rem var(--defFont);
+  color: #fff;
+  cursor: pointer;
+}

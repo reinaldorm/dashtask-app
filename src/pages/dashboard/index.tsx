@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { UserContext, UserProps } from '../../context/user/context';
 import Header from '../../components/dashboard/header';
 import Menu from '../../components/dashboard/menu';
@@ -9,24 +9,20 @@ import Account from '../../components/dashboard/account';
 import Add from '../../components/dashboard/add';
 import Archive from '../../components/dashboard/archive';
 import Home from '../../components/dashboard/home';
+import DataProvider from '../../context/data/provider';
+import Redirect from '../../components/global/Redirect';
 import Loading from './Loading';
 import styles from './css/dashboard.module.css';
-import DataProvider from '../../context/data/provider';
 
 const Dashboard = () => {
-  const navigate = useNavigate();
-  const { user } = React.useContext(UserContext) as UserProps;
+  const { user, authenticating } = React.useContext(UserContext) as UserProps;
   const [location, setLocation] = React.useState('Welcome');
 
-  React.useEffect(() => {
-    if (!user) {
-      navigate('/');
-    }
-  }, [user]);
-
-  if (user === 1 || user === null) {
+  if (authenticating) {
     return <Loading />;
-  } else
+  } else if (!user) {
+    return <Redirect to='/' />;
+  } else {
     return (
       <div className={styles.dashboard}>
         <DataProvider user={user}>
@@ -34,33 +30,34 @@ const Dashboard = () => {
           <Menu setLocation={setLocation} />
           <Routes>
             <Route
-              path="tasks"
+              path='tasks'
               element={<Tasks />}
             />
             <Route
-              path="add"
+              path='add'
               element={<Add />}
             />
             <Route
-              path="archive"
+              path='archive'
               element={<Archive />}
             />
             <Route
-              path="settings"
+              path='settings'
               element={<Settings />}
             />
             <Route
-              path="account"
+              path='account'
               element={<Account />}
             />
             <Route
-              path="home"
+              path='home'
               element={<Home />}
             />
           </Routes>
         </DataProvider>
       </div>
     );
+  }
 };
 
 export default Dashboard;

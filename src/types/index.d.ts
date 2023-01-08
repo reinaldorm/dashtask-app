@@ -13,4 +13,7 @@ interface UserInterface {
 
 interface UserTaskInterface {
   tasks: Array<TaskInterface>;
+  deleted: Array<TaskInterface>;
+  archived: Array<TaskInterface>;
+  completed: Array<TaskInterface>;
 }
