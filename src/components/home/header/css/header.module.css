@@ -22,6 +22,11 @@
   padding: 0.5rem 0.5rem;
 }
 
+.navLink:focus {
+  outline: 1px solid var(--brandBlue);
+  border-radius: 0.5rem;
+}
+
 .navSignUp {
   padding: 0.5rem 1rem;
   color: #fff;

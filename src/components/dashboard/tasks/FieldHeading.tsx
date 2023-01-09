@@ -12,7 +12,7 @@ const FieldHeading = ({ legend }: FieldHeadingProps) => {
       <h1 className={styles.fieldHeadingLegend}>{legend}</h1>
       <div className={styles.fieldHeadingLine}></div>
       <button>
-        <img src={assets.icons.chevron_down_dark} />
+        <img src={assets.icons.chevron_down_light} />
       </button>
     </div>
   );

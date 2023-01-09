@@ -6,13 +6,13 @@ import Loading from '../../../pages/dashboard/Loading';
 import styles from './css/tasks.module.css';
 import useDate from '../../../hooks/useDate';
 
-const TodayField = () => {
+const TomorrowField = () => {
   const date = useDate();
   const { taskData } = React.useContext(DataContext) as DataProps;
-  const todayTasks = React.useMemo<Array<TaskInterface> | null>(() => {
+  const tomorrowTasks = React.useMemo<Array<TaskInterface> | null>(() => {
     if (taskData.data) {
       return taskData.data.tasks.filter(({ task_final_date, task_status }) => {
-        return date.isSameDay(task_final_date) && !date.isOutdated(task_final_date) && task_status === 1;
+        return date.isNextDay(task_final_date) && !date.isOutdated(task_final_date) && task_status === 1;
       });
     } else {
       return null;
@@ -21,16 +21,16 @@ const TodayField = () => {
 
   return (
     <div className={styles.taskField}>
-      <FieldHeading legend='Today' />
+      <FieldHeading legend='Tomorrow' />
       {(taskData.loading && <Loading />) ||
-        (todayTasks && (
+        (tomorrowTasks && (
           <FieldList
-            date_label='Today'
-            tasks={todayTasks}
+            date_label='Tomorrow'
+            tasks={tomorrowTasks}
           />
         ))}
     </div>
   );
 };
 
-export default TodayField;
+export default TomorrowField;

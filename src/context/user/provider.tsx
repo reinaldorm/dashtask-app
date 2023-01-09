@@ -18,14 +18,14 @@ const UserProvider = ({ children }: UserProviderProps) => {
   const userSignUp = async (username: string, email: string, password: string) => {
     const { user } = await createUserWithEmailAndPassword(auth, email, password);
 
-    await setDoc(doc(db, 'users', user.uid), {
+    const userInfo: UserInterface = {
       username,
       email,
       task_count: 1,
       custom_tags: [],
-    });
+    };
 
-    await setDoc(doc(db, 'users-tasks', user.uid), {
+    const userTask: UserTaskInterface = {
       deleted: [],
       archived: [],
       completed: [],
@@ -33,12 +33,17 @@ const UserProvider = ({ children }: UserProviderProps) => {
         {
           task_initial_date: Date.now(),
           task_final_date: Date.now() + 8.64e7,
-          task_tags: ['Health'],
+          task_tags: ['work'],
+          task_custom_tags: [],
           task_name: 'First Task',
           task_status: 1,
+          task_level: 1,
         },
       ],
-    });
+    };
+
+    await setDoc(doc(db, 'users', user.uid), userInfo);
+    await setDoc(doc(db, 'users-tasks', user.uid), userTask);
   };
 
   const userSignIn = async (email: string, password: string) => {
@@ -51,15 +56,7 @@ const UserProvider = ({ children }: UserProviderProps) => {
     navigate('/');
   };
 
-  React.useEffect(() => {
-    console.log(authenticating, 'console at User Provider');
-  }, [authenticating]);
-
-  return (
-    <Provider value={{ userSignUp, userSignIn, userSignOut, user, authenticating }}>
-      {children}
-    </Provider>
-  );
+  return <Provider value={{ userSignUp, userSignIn, userSignOut, user, authenticating }}>{children}</Provider>;
 };
 
 export default UserProvider;

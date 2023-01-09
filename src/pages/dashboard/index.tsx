@@ -13,9 +13,11 @@ import DataProvider from '../../context/data/provider';
 import Redirect from '../../components/global/Redirect';
 import Loading from './Loading';
 import styles from './css/dashboard.module.css';
+import useTitle from '../../hooks/useTitle';
 
 const Dashboard = () => {
   const { user, authenticating } = React.useContext(UserContext) as UserProps;
+  useTitle('Dashboard');
 
   if (authenticating) {
     return <Loading />;

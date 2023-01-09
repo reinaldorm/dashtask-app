@@ -7,29 +7,6 @@
   overflow-y: scroll;
 }
 
-.tasks::-webkit-scrollbar-thumb {
-  background-color: var(--brandBlue);
-  background: linear-gradient(
-    180deg,
-    #ff59f8 0%,
-    #ae72ff 19.79%,
-    #90e9ed 40.62%,
-    #5cd167 61.98%,
-    #ffee00 82.53%
-  );
-  padding: 1rem;
-}
-
-.tasks::-webkit-scrollbar-track {
-  background-color: #111;
-  padding: 1rem;
-}
-
-.tasks::-webkit-scrollbar {
-  background: #111;
-  width: 0.115rem;
-}
-
 .taskList {
   display: flex;
   gap: 1.5rem;
@@ -56,4 +33,105 @@
   flex: 1;
   background-color: #353535;
   height: 1px;
+}
+
+.fieldList {
+  display: flex;
+  overflow: hidden;
+  overflow-x: scroll;
+  gap: 1.5rem;
+  padding: 0.5rem;
+}
+
+.task {
+  padding: 1.5rem;
+
+  background-color: #1e1e1e;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 1rem;
+  flex: 1 0 300px;
+  max-width: 300px;
+
+  position: relative;
+}
+
+.taskLevel {
+  width: 0.125rem;
+  height: 4rem;
+
+  border-radius: 0.625rem;
+
+  position: absolute;
+  top: calc(50% - 2rem);
+  left: -0.5px;
+}
+
+.taskInfo {
+  isolation: auto;
+}
+
+.taskInfoDate {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font: 600 0.625rem var(--defFont);
+  color: #626262;
+  margin-bottom: 0.5rem;
+}
+
+.taskInfoName {
+  font: 600 1rem var(--defFont);
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.taskInfoTags {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.taskTag {
+  font: 600 0.625rem var(--defFont);
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+}
+
+.taskMenu {
+  align-self: flex-start;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.tasks::-webkit-scrollbar-thumb {
+  background-color: var(--brandBlue);
+  background: linear-gradient(180deg, #ff59f8 0%, #ae72ff 19.79%, #90e9ed 40.62%, #5cd167 61.98%, #ffee00 82.53%);
+  padding: 1rem;
+}
+
+.tasks::-webkit-scrollbar-track {
+  background-color: #111;
+  padding: 1rem;
+}
+
+.tasks::-webkit-scrollbar {
+  background: #111;
+  width: 0.115rem;
+}
+
+.fieldList::-webkit-scrollbar-thumb {
+  background-color: var(--brandBlue);
+  background: linear-gradient(90deg, #ff59f8 0%, #ae72ff 19.79%, #90e9ed 40.62%, #5cd167 61.98%, #ffee00 82.53%);
+  padding: 0.5rem;
+}
+
+.fieldList::-webkit-scrollbar-track {
+  background-color: #111;
+  padding: 0.5rem;
+}
+
+.fieldList::-webkit-scrollbar {
+  background: #111;
+  width: 0.115rem;
+  height: 0.115rem;
 }
