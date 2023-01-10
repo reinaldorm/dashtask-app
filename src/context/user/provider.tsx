@@ -1,4 +1,5 @@
 import React from 'react';
+import * as uuid from 'uuid';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
@@ -32,12 +33,13 @@ const UserProvider = ({ children }: UserProviderProps) => {
       tasks: [
         {
           task_initial_date: Date.now(),
-          task_final_date: Date.now() + 8.64e7,
+          task_final_date: Date.now() + 300000,
           task_tags: ['work'],
           task_custom_tags: [],
           task_name: 'First Task',
           task_status: 1,
           task_level: 1,
+          task_id: uuid.v4(),
         },
       ],
     };
@@ -56,7 +58,11 @@ const UserProvider = ({ children }: UserProviderProps) => {
     navigate('/');
   };
 
-  return <Provider value={{ userSignUp, userSignIn, userSignOut, user, authenticating }}>{children}</Provider>;
+  return (
+    <Provider value={{ userSignUp, userSignIn, userSignOut, user, authenticating }}>
+      {children}
+    </Provider>
+  );
 };
 
 export default UserProvider;

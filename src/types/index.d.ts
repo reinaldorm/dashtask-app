@@ -27,6 +27,7 @@ interface TaskInterface {
   task_name: string;
   task_status: TaskStatus;
   task_level: TaskLevel;
+  task_id: string;
 }
 
 interface UserInterface {
