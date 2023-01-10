@@ -3,8 +3,6 @@
 
   grid-column: 2 / -1;
   grid-row: 2 / -1;
-
-  overflow-y: scroll;
 }
 
 .taskList {
@@ -148,7 +146,14 @@
 
 .tasks::-webkit-scrollbar-thumb {
   background-color: var(--brandBlue);
-  background: linear-gradient(180deg, #ff59f8 0%, #ae72ff 19.79%, #90e9ed 40.62%, #5cd167 61.98%, #ffee00 82.53%);
+  background: linear-gradient(
+    180deg,
+    #ff59f8 0%,
+    #ae72ff 19.79%,
+    #90e9ed 40.62%,
+    #5cd167 61.98%,
+    #ffee00 82.53%
+  );
   padding: 1rem;
 }
 
@@ -164,7 +169,14 @@
 
 .fieldList::-webkit-scrollbar-thumb {
   background-color: var(--brandBlue);
-  background: linear-gradient(90deg, #ff59f8 0%, #ae72ff 19.79%, #90e9ed 40.62%, #5cd167 61.98%, #ffee00 82.53%);
+  background: linear-gradient(
+    90deg,
+    #ff59f8 0%,
+    #ae72ff 19.79%,
+    #90e9ed 40.62%,
+    #5cd167 61.98%,
+    #ffee00 82.53%
+  );
   padding: 0.5rem;
 }
 

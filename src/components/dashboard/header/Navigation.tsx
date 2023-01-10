@@ -3,10 +3,14 @@ import styles from './css/header.module.css';
 import NavAdd from './NavAdd';
 import NavUser from './NavUser';
 
-const Navigation = () => {
+interface NavigationProps {
+  header: 1 | 2;
+}
+
+const Navigation = ({ header }: NavigationProps) => {
   return (
     <nav className={styles.navigation}>
-      <NavAdd />
+      <NavAdd header={header} />
       <NavUser />
     </nav>
   );

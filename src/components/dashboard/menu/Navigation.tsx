@@ -7,39 +7,37 @@ import { DataContext, DataProps } from '../../../context/data/context';
 const Navigation = () => {
   const { updateLocation } = React.useContext(DataContext) as DataProps;
 
-  const handleLocation = ({ currentTarget }: React.MouseEvent<HTMLAnchorElement>) => {
-    if (currentTarget.textContent) {
-      updateLocation(currentTarget.textContent);
-    }
+  const handleLocation = (location: string) => {
+    updateLocation(location);
   };
 
   return (
     <nav className={styles.navigation}>
       <NavLink
-        onClick={handleLocation}
+        onClick={() => handleLocation('home')}
         className={styles.navigationLink}
-        to='home'>
+        to="home">
         <img src={assets.icons.home} />
         Home
       </NavLink>
       <NavLink
-        onClick={handleLocation}
+        onClick={() => handleLocation('tasks')}
         className={styles.navigationLink}
-        to='tasks'>
+        to="tasks">
         <img src={assets.icons.tasks} />
         Tasks
       </NavLink>
       <NavLink
-        onClick={handleLocation}
+        onClick={() => handleLocation('add')}
         className={styles.navigationLink}
-        to='add'>
+        to="add">
         <img src={assets.icons.add_rect} />
         Add
       </NavLink>
       <NavLink
-        onClick={handleLocation}
+        onClick={() => handleLocation('archive')}
         className={styles.navigationLink}
-        to='archive'>
+        to="archive">
         <img src={assets.icons.box} />
         Archive
       </NavLink>

@@ -37,7 +37,7 @@ const Transition = ({ message }: TransitionProps) => {
     <div className={styles.transition}>
       <div className={styles.transitionCover}>
         <p className={styles.transitionMessage}>
-          Hello <strong>{userData.data?.username}!</strong>
+          {message} <strong>{userData.data?.username}!</strong>
         </p>
       </div>
     </div>
