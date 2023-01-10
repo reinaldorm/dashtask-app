@@ -10,7 +10,7 @@ const NavAdd = () => {
   return (
     <NavLink
       to='add'
-      onClick={() => updateLocation('Add')}
+      onClick={() => updateLocation('add')}
       className={styles.addTask}>
       <img
         src={assets.icons.add_circle}

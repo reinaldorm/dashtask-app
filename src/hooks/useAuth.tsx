@@ -2,7 +2,7 @@ import { User } from 'firebase/auth';
 import React from 'react';
 import { FirebaseContext, FirebaseProps } from '../context/firebase/context';
 
-const useUser = () => {
+const useAuth = () => {
   const { auth } = React.useContext(FirebaseContext) as FirebaseProps;
   const [user, setUser] = React.useState<User | null>(null);
   const [authenticating, setAuthenticating] = React.useState(true);
@@ -22,4 +22,4 @@ const useUser = () => {
   return { user, authenticating };
 };
 
-export default useUser;
+export default useAuth;

@@ -4,8 +4,7 @@
   padding: 4rem 16rem;
   display: grid;
 
-  background: var(--brandBlue) url('../../../../assets/sources/svg/bg-auth.svg') repeat-x center /
-    cover;
+  background: var(--brandBlue) url('../../../../assets/sources/svg/bg-auth.svg') repeat-x center / cover;
 }
 
 .form {
@@ -33,13 +32,13 @@
 }
 
 .formHeadingH1 {
-  font: 600 2rem var(--defFont);
+  font: 600 2rem 'Poppins';
   color: #ffffff;
   transition: opacity 0.2s ease-in-out 0s;
 }
 
 .formHeadingNavLink {
-  font: 600 1rem var(--defFont);
+  font: 600 1rem 'Poppins';
   color: #ffffff;
   transition: opacity 0.4s ease 0s;
 }
@@ -50,7 +49,7 @@
 
 .formInput {
   padding: 1rem 0rem;
-  font: 500 1rem var(--defFont);
+  font: 500 1rem 'Poppins';
   color: #fff;
   border-bottom: 0.125rem solid #353535;
   width: 100%;
@@ -65,7 +64,7 @@
   display: flex;
   align-items: center;
   gap: 0.625rem;
-  font: 600 1.5rem var(--defFont);
+  font: 600 1.5rem 'Poppins';
 }
 
 .formInputLabel::after {
@@ -94,7 +93,7 @@
   border-radius: 0.5rem;
   gap: 1rem;
   justify-content: center;
-  font: 600 1rem var(--defFont);
+  font: 600 1rem 'Poppins';
   color: #fff;
   cursor: pointer;
 }
@@ -104,7 +103,7 @@
   align-items: center;
   flex: 1;
   background: var(--brandBlue);
-  font: 600 1.25rem var(--defFont);
+  font: 600 1.25rem 'Poppins';
   color: #fff;
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;

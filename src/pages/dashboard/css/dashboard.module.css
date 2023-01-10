@@ -4,4 +4,64 @@
   background-color: #131313;
   display: grid;
   grid: auto 1fr / 350px 1fr;
+  position: relative;
+}
+
+.transition {
+  grid-column: 2 / -1;
+  grid-row: 2 / -1;
+
+  display: flex;
+
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9;
+}
+
+.transitionCover {
+  background: #0075ff;
+  width: 100%;
+  height: 0%;
+  pointer-events: none;
+  align-self: flex-end;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.transitionMessage {
+  font: 600 3rem 'Poppins';
+  color: #fff;
+}
+
+.transitionMessage strong {
+  font: 600 3rem 'Poppins';
+  color: #131313;
+}
+
+.loading {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #131313;
+}
+
+.loadingIcon {
+  animation: rotate 1.5s cubic-bezier(0.7, 0, 0.3, 1) 0s infinite normal both;
+}
+
+@keyframes rotate {
+  0% {
+    rotate: z 0deg;
+  }
+
+  100% {
+    rotate: z 360deg;
+  }
 }

@@ -12,8 +12,9 @@ import Home from '../../components/dashboard/home';
 import DataProvider from '../../context/data/provider';
 import Redirect from '../../components/global/Redirect';
 import Loading from './Loading';
-import styles from './css/dashboard.module.css';
 import useTitle from '../../hooks/useTitle';
+import styles from './css/dashboard.module.css';
+import Transition from './Transition';
 
 const Dashboard = () => {
   const { user, authenticating } = React.useContext(UserContext) as UserProps;
@@ -29,6 +30,7 @@ const Dashboard = () => {
         <DataProvider user={user}>
           <Header />
           <Menu />
+          <Transition message='Hello!' />
           <Routes>
             <Route
               path='tasks'

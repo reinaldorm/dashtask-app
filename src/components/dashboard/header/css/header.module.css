@@ -9,8 +9,9 @@
 }
 
 .legend {
-  font: 700 2rem var(--defFont);
+  font: 700 2rem 'Poppins';
   color: #fff;
+  text-transform: capitalize;
 }
 
 .navigation {
@@ -28,17 +29,71 @@
 
   background: var(--brandBlue);
   border-radius: 1rem;
-  font: 600 1rem var(--defFont);
+  font: 600 1rem 'Poppins';
   color: #fff;
   cursor: pointer;
 }
 
 .userMenu {
+  position: relative;
+}
+
+.userTrigger {
   display: flex;
   align-items: center;
   gap: 0.25rem;
 
-  font: 600 1rem var(--defFont);
+  position: relative;
+
+  font: 600 1rem 'Poppins';
   color: #fff;
   cursor: pointer;
+}
+
+.userTrigger img {
+  transition: rotate 0.4s ease 0s;
+}
+
+.userMenu:global(.active) .userTrigger img {
+  rotate: z -90deg;
+}
+
+.userNav {
+  border-radius: 0.5rem;
+  overflow: hidden;
+  position: absolute;
+  top: 100%;
+  width: 250px;
+  left: -100%;
+  padding: 2rem 0rem;
+}
+
+.userNavLink {
+  gap: 1.5rem;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  font: 600 1rem 'Poppins';
+  color: #fff;
+  width: 100%;
+  background: #1e1e1e;
+  transition: background 0.2s ease 0s, opacity 0.2s ease 0s;
+  cursor: pointer;
+}
+
+.userNavLink:nth-child(1) {
+  border-radius: 0.5rem 0.5rem 0rem 0rem;
+}
+
+.userNavLink:nth-child(2) {
+  border-radius: 0rem 0rem 0.5rem 0.5rem;
+}
+
+.userNavLink:hover,
+.userNavLink:focus {
+  background: #343434;
+}
+
+.userNavLink:active {
+  opacity: 0.5;
 }

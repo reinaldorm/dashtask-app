@@ -16,7 +16,7 @@
 }
 
 .navLink {
-  font: 600 1rem var(--defFont);
+  font: 600 1rem 'Poppins';
   color: #ffffff;
   cursor: pointer;
   padding: 0.5rem 0.5rem;
@@ -25,7 +25,7 @@
 .navSignUp {
   padding: 0.5rem 1rem;
   color: #fff;
-  font: 600 1rem var(--defFont);
+  font: 600 1rem 'Poppins';
   background: var(--brandBlue);
   border-radius: 0.5rem;
   cursor: pointer;

@@ -3,6 +3,7 @@ import TodayField from './TodayField';
 import TomorrowField from './TomorrowField';
 import SoonField from './SoonField';
 import styles from './css/tasks.module.css';
+import OutdatedField from './OutdatedField';
 
 const TaskList = () => {
   return (
@@ -10,6 +11,7 @@ const TaskList = () => {
       <TodayField />
       <TomorrowField />
       <SoonField />
+      <OutdatedField />
     </div>
   );
 };

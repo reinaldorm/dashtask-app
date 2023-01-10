@@ -10,7 +10,7 @@
 }
 
 .landingHeading {
-  font: 700 4rem var(--defFont);
+  font: 700 4rem 'Poppins';
   color: #ffffff;
   text-align: center;
   position: relative;
@@ -18,25 +18,25 @@
 
 .landingHeadingStrong {
   composes: landingHeading;
-  font: 700 4rem var(--defFont);
+  font: 700 4rem 'Poppins';
   color: #00c2ff;
 }
 
 .landingDescription {
   max-width: 625px;
-  font: 400 1.5rem var(--defFont);
+  font: 400 1.5rem 'Poppins';
   color: #ffffff;
   text-align: center;
   margin: auto;
 }
 
 .landingDescription > strong {
-  font: 700 1.5rem var(--defFont);
+  font: 700 1.5rem 'Poppins';
   color: #ffffff;
 }
 
 .landingDescription > span {
-  font: 600 1.5rem var(--defFont);
+  font: 600 1.5rem 'Poppins';
   color: #00c2ff;
   display: inline;
 }
