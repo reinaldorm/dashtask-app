@@ -1,0 +1,18 @@
+.debug {
+  padding: 0.75rem 1rem;
+  background: #111;
+  border-radius: 0.5rem;
+  color: white;
+  font: 500 1.5rem 'Poppins';
+  transition: all 0.4s ease 0s;
+  margin: 1rem;
+  cursor: pointer;
+}
+
+.debug:hover {
+  opacity: 0.75;
+}
+
+.debug:active {
+  opacity: 0.5;
+}

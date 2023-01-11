@@ -1,3 +1,5 @@
+type DatabaseEndpoints = 'users' | 'users-tasks';
+
 // Levels
 // 1 - Low-Level-Task
 // 2 - Mid-Level-Task
@@ -5,12 +7,10 @@
 type TaskLevel = 1 | 2 | 3;
 
 // Status
-// 1 - Regular
-// 2 - Completed
-// 3 - Archived
-// 4 - Deleted
-// 5 - Outdated
-type TaskStatus = 1 | 2 | 3 | 4 | 5;
+// 1 - Active
+// 2 - Archived
+// 3 - Deleted
+type TaskStatus = 1 | 2 | 3;
 
 type TaskDefaultTags = 'work' | 'study' | 'health' | 'hobbie' | 'misc';
 
@@ -38,8 +38,7 @@ interface UserInterface {
 }
 
 interface UserTaskInterface {
-  tasks: Array<TaskInterface>;
+  active: Array<TaskInterface>;
   deleted: Array<TaskInterface>;
   archived: Array<TaskInterface>;
-  completed: Array<TaskInterface>;
 }

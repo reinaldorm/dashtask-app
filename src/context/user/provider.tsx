@@ -27,13 +27,10 @@ const UserProvider = ({ children }: UserProviderProps) => {
     };
 
     const userTask: UserTaskInterface = {
-      deleted: [],
-      archived: [],
-      completed: [],
-      tasks: [
+      active: [
         {
           task_initial_date: Date.now(),
-          task_final_date: Date.now() + 300000,
+          task_final_date: Date.now() + 8.64e7,
           task_tags: ['work'],
           task_custom_tags: [],
           task_name: 'First Task',
@@ -42,6 +39,8 @@ const UserProvider = ({ children }: UserProviderProps) => {
           task_id: uuid.v4(),
         },
       ],
+      deleted: [],
+      archived: [],
     };
 
     await setDoc(doc(db, 'users', user.uid), userInfo);

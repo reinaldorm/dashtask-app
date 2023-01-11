@@ -4,20 +4,25 @@ import React from 'react';
 type Destination = keyof UserTaskInterface;
 
 const useTask = (db: Firestore, uid: string) => {
-  const updateTask = async (id: string) => {};
+  const docRef = doc(db, 'users-tasks', uid);
 
-  const moveTask = async (id: string, from: Destination, to: Destination) => {
-    const docRef = doc(db, 'users-task', uid);
-    const docSnap = await getDoc(docRef);
-    const docData = docSnap.data() as unknown;
-
-    if (docSnap.exists()) {
+  const updateTask = async (id?: string) => {
+    try {
+      console.log(docRef);
+      await updateDoc(docRef, {
+        active: ['a'],
+      });
+      console.log('doc updated');
+    } catch (e) {
+      console.log('something gone wrong', e);
     }
   };
 
+  const moveTask = async (id: string, from: Destination, to: Destination) => {};
+
   const deleteTask = async (id: string) => {};
 
-  return {};
+  return { updateTask, moveTask, deleteTask };
 };
 
 export default useTask;

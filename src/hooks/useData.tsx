@@ -12,7 +12,7 @@ function isData<T>(value: any, check: string): value is T {
 function useData<T extends UserInterface | UserTaskInterface>(
   db: Firestore,
   uid: string,
-  collection: string,
+  collection: DatabaseEndpoints,
   check: string
 ) {
   const [data, setData] = React.useState<T | null>(null);

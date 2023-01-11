@@ -12,7 +12,7 @@ interface DataProviderProps {
 const DataProvider = ({ user, children }: DataProviderProps) => {
   const { db } = React.useContext(FirebaseContext) as FirebaseProps;
   const userData = useData<UserInterface>(db, user.uid, 'users', 'username');
-  const taskData = useData<UserTaskInterface>(db, user.uid, 'users-tasks', 'tasks');
+  const taskData = useData<UserTaskInterface>(db, user.uid, 'users-tasks', 'active');
 
   return <Provider value={{ userData, taskData }}>{children}</Provider>;
 };

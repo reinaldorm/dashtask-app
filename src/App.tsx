@@ -3,24 +3,29 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import FirebaseProvider from './context/firebase/provider';
 import UserProvider from './context/user/provider';
 import Dashboard from './pages/dashboard';
+import Debug from './pages/debug';
 import Home from './pages/home';
 
 function App() {
   return (
     <BrowserRouter>
       <FirebaseProvider>
-        <UserProviders>
+        <UserProvider>
           <Routes>
             <Route
-              path='/*'
+              path="/*"
               element={<Home />}
             />
             <Route
-              path='/dashboard/*'
+              path="/dashboard/*"
               element={<Dashboard />}
             />
+            <Route
+              path="/debug"
+              element={<Debug />}
+            />
           </Routes>
-        </UserProviders>
+        </UserProvider>
       </FirebaseProvider>
     </BrowserRouter>
   );

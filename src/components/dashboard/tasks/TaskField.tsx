@@ -18,7 +18,7 @@ const TaskField = ({ checker, legend, date_label }: TaskFieldProps) => {
 
   const tasks = React.useMemo<Array<TaskInterface> | null>(() => {
     if (taskData.data) {
-      return taskData.data.tasks.filter(({ task_final_date, task_status }) => {
+      return taskData.data.active.filter(({ task_final_date, task_status }) => {
         return checkDate[checker](task_final_date) && task_status === 1;
       });
     } else {
