@@ -1,20 +1,20 @@
 import React from 'react';
 import { DataContext, DataProps } from '../../../context/data/context';
+import { DashboardContext, DashboardProps } from '../../../context/dashboard/context';
+import TaskList from './TaskList';
 import useTitle from '../../../hooks/useTitle';
 import styles from './css/tasks.module.css';
-import TaskList from './TaskList';
 
-interface Tasks {
-  setHeader: React.Dispatch<React.SetStateAction<1 | 2>>;
-}
-
-const Tasks = ({ setHeader }: Tasks) => {
+const Tasks = () => {
   const { taskData } = React.useContext(DataContext) as DataProps;
+  const { setSection } = React.useContext(DashboardContext) as DashboardProps;
   useTitle('Tasks');
 
   React.useEffect(() => {
-    taskData.getData();
-    setHeader(1);
+    if (taskData.data === null) {
+      taskData.getData();
+    }
+    setSection('tasks');
   }, []);
 
   return (

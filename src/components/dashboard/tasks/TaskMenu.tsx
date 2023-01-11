@@ -13,7 +13,6 @@ const TaskMenu = () => {
     } else {
       setMenu(false);
       handler.classList.remove('active');
-      console.log('mouse out');
     }
   };
 

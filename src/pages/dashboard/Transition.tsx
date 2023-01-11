@@ -18,8 +18,8 @@ const Transition = ({ message }: TransitionProps) => {
         duration: 1,
         delay: 0.1,
         ease: Power4.easeOut,
-        height: '100%',
-        alignSelf: 'flex-end',
+        width: '100%',
+        justifySelf: 'flex-start',
       })
       .then(() =>
         gsap.to(`.${styles.transitionCover}`, {
@@ -27,8 +27,8 @@ const Transition = ({ message }: TransitionProps) => {
           duration: 1,
           delay: 0.25,
           ease: Power4.easeOut,
-          height: '0%',
-          alignSelf: 'flex-start',
+          width: '0%',
+          justifySelf: 'flex-end',
         })
       );
   }, []);

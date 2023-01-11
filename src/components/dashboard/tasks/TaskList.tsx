@@ -1,17 +1,28 @@
 import React from 'react';
-import TodayField from './TodayField';
-import TomorrowField from './TomorrowField';
-import SoonField from './SoonField';
+import TaskField from './TaskField';
 import styles from './css/tasks.module.css';
-import OutdatedField from './OutdatedField';
 
 const TaskList = () => {
   return (
     <div className={styles.taskList}>
-      <TodayField />
-      <TomorrowField />
-      <SoonField />
-      <OutdatedField />
+      <TaskField
+        checker='isToday'
+        legend='Today'
+        date_label='Today'
+      />
+      <TaskField
+        checker='isTomorrow'
+        legend='Tomorrow'
+        date_label='Tomorrow'
+      />
+      <TaskField
+        checker='isSoon'
+        legend='Soon'
+      />
+      <TaskField
+        checker='isOutOfDate'
+        legend='Out of Date'
+      />
     </div>
   );
 };

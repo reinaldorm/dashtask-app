@@ -1,17 +1,15 @@
 import React from 'react';
+import { DashboardContext, DashboardProps } from '../../../context/dashboard/context';
 import useTitle from '../../../hooks/useTitle';
 import styles from './css/archive.module.css';
 
-interface Archive {
-  setHeader: React.Dispatch<React.SetStateAction<1 | 2>>;
-}
-
-const Archive = ({ setHeader }: Archive) => {
-  React.useEffect(() => {
-    setHeader(1);
-  }, []);
-
+const Archive = () => {
+  const { setSection } = React.useContext(DashboardContext) as DashboardProps;
   useTitle('Archive');
+
+  React.useEffect(() => {
+    setSection('archive');
+  }, []);
 
   return <div className={styles.archive}>Archive</div>;
 };

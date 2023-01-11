@@ -1,36 +1,23 @@
+import { Firestore, updateDoc, setDoc, getDoc, doc } from 'firebase/firestore';
 import React from 'react';
-import { doc, Firestore, getDoc } from 'firebase/firestore';
 
-const isTask = (value: any): value is UserTaskInterface => {
-  if ('tasks' in value) {
-    return true;
-  } else {
-    return false;
-  }
-};
+type Destination = keyof UserTaskInterface;
 
-function useData(db: Firestore, uid: string) {
-  const [data, setData] = React.useState<UserTaskInterface | null>(null);
-  const [loading, setLoading] = React.useState(true);
+const useTask = (db: Firestore, uid: string) => {
+  const updateTask = async (id: string) => {};
 
-  const getData = async () => {
-    setLoading(true);
-    const docRef = doc(db, 'users-tasks', uid);
+  const moveTask = async (id: string, from: Destination, to: Destination) => {
+    const docRef = doc(db, 'users-task', uid);
     const docSnap = await getDoc(docRef);
     const docData = docSnap.data() as unknown;
-    if (docSnap.exists() && isTask(docData)) {
-      setData(docData);
-    } else {
-      setData(null);
+
+    if (docSnap.exists()) {
     }
-    setLoading(false);
   };
 
-  React.useEffect(() => {
-    getData();
-  }, []);
+  const deleteTask = async (id: string) => {};
 
-  return { data, getData, loading };
-}
+  return {};
+};
 
-export default useData;
+export default useTask;

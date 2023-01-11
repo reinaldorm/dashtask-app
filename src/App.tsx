@@ -9,7 +9,7 @@ function App() {
   return (
     <BrowserRouter>
       <FirebaseProvider>
-        <UserProvider>
+        <UserProviders>
           <Routes>
             <Route
               path='/*'
@@ -20,7 +20,7 @@ function App() {
               element={<Dashboard />}
             />
           </Routes>
-        </UserProvider>
+        </UserProviders>
       </FirebaseProvider>
     </BrowserRouter>
   );

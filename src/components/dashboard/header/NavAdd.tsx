@@ -2,27 +2,29 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './css/header.module.css';
 import assets from '../../../assets/components/dashtask';
-import { DataContext, DataProps } from '../../../context/data/context';
+import { DashboardContext, DashboardProps } from '../../../context/dashboard/context';
 
-interface NavAddProps {
-  header: 1 | 2;
-}
+const NavAdd = () => {
+  const { section } = React.useContext(DashboardContext) as DashboardProps;
+  const [state, setState] = React.useState<1 | 2>(1);
 
-const NavAdd = ({ header }: NavAddProps) => {
-  const { updateLocation } = React.useContext(DataContext) as DataProps;
-
-  React.useEffect(() => {}, [header]);
+  React.useEffect(() => {
+    if (section === 'add' || section === 'account') {
+      setState(2);
+    } else {
+      setState(1);
+    }
+  }, [section]);
 
   return (
     <NavLink
-      to="add"
-      onClick={() => updateLocation('add')}
-      className={styles.addTask}>
+      to={state === 1 ? 'add' : 'tasks'}
+      className={`${styles.addTask} ${state === 2 && styles.addTaskDark}`}>
       <img
         src={assets.icons.add_circle}
-        alt="add-task-icon"
+        alt='add-task-icon'
       />
-      Add Task
+      {state === 1 && 'Add Task'}
     </NavLink>
   );
 };

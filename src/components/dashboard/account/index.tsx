@@ -1,13 +1,14 @@
 import React from 'react';
+import { DashboardContext, DashboardProps } from '../../../context/dashboard/context';
 import styles from './css/account.module.css';
+import useTitle from '../../../hooks/useTitle';
 
-interface Account {
-  setHeader: React.Dispatch<React.SetStateAction<1 | 2>>;
-}
+const Account = () => {
+  const { setSection } = React.useContext(DashboardContext) as DashboardProps;
+  useTitle('Account');
 
-const Account = ({ setHeader }: Account) => {
   React.useEffect(() => {
-    setHeader(2);
+    setSection('account');
   }, []);
 
   return <div className={styles.account}>Account</div>;

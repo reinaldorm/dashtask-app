@@ -1,17 +1,15 @@
 import React from 'react';
+import { DashboardContext, DashboardProps } from '../../../context/dashboard/context';
 import useTitle from '../../../hooks/useTitle';
 import styles from './css/home.module.css';
 
-interface Home {
-  setHeader: React.Dispatch<React.SetStateAction<1 | 2>>;
-}
-
-const Home = ({ setHeader }: Home) => {
-  React.useEffect(() => {
-    setHeader(1);
-  }, []);
-
+const Home = () => {
+  const { setSection } = React.useContext(DashboardContext) as DashboardProps;
   useTitle('Home');
+
+  React.useEffect(() => {
+    setSection('home');
+  }, []);
 
   return <div className={styles.home}>Home</div>;
 };

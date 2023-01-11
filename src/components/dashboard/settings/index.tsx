@@ -1,13 +1,14 @@
 import React from 'react';
+import { DashboardContext, DashboardProps } from '../../../context/dashboard/context';
+import useTitle from '../../../hooks/useTitle';
 import styles from './css/settings.module.css';
 
-interface Settings {
-  setHeader: React.Dispatch<React.SetStateAction<1 | 2>>;
-}
+const Settings = () => {
+  const { setSection } = React.useContext(DashboardContext) as DashboardProps;
+  useTitle('Settings');
 
-const Settings = ({ setHeader }: Settings) => {
   React.useEffect(() => {
-    setHeader(1);
+    setSection('settings');
   }, []);
 
   return <div className={styles.settings}>Settings</div>;

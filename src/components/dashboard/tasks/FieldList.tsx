@@ -12,7 +12,7 @@ const FieldList = ({ tasks, date_label }: FieldListProps) => {
     <div className={styles.fieldList}>
       {tasks.map((task) => (
         <Task
-          key={task.task_name}
+          key={task.task_id}
           date_label={date_label}
           task={task}
         />

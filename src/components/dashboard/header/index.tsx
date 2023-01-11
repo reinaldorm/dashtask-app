@@ -1,22 +1,18 @@
 import React from 'react';
 import gsap, { Power4 } from 'gsap';
-import { DataContext, DataProps } from '../../../context/data/context';
 import Navigation from './Navigation';
 import styles from './css/header.module.css';
+import { DashboardContext, DashboardProps } from '../../../context/dashboard/context';
 
-interface HeaderProps {
-  header: 1 | 2;
-}
-
-const Header = ({ header }: HeaderProps) => {
-  const { location } = React.useContext(DataContext) as DataProps;
+const Header = () => {
+  const { section } = React.useContext(DashboardContext) as DashboardProps;
 
   React.useEffect(() => {
-    if (header === 2) {
+    if (section === 'add' || section === 'account') {
       gsap.to(`.${styles.transitionCover}`, {
         duration: 1.5,
         ease: Power4.easeInOut,
-        scale: 60,
+        scale: 100,
       });
     } else {
       gsap.to(`.${styles.transitionCover}`, {
@@ -25,15 +21,15 @@ const Header = ({ header }: HeaderProps) => {
         scale: 0,
       });
     }
-  }, [header]);
+  }, [section]);
 
   return (
     <div className={styles.header}>
       <div className={styles.transition}>
         <div className={styles.transitionCover}></div>
       </div>
-      <h1 className={styles.legend}>{location}</h1>
-      <Navigation header={header} />
+      <h1 className={styles.legend}>{section}</h1>
+      <Navigation />
     </div>
   );
 };

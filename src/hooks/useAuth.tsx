@@ -12,6 +12,7 @@ const useAuth = () => {
       setAuthenticating(true);
       if (user) {
         setUser(user);
+        console.log(user);
       } else {
         setUser(null);
       }

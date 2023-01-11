@@ -146,14 +146,7 @@
 
 .tasks::-webkit-scrollbar-thumb {
   background-color: var(--brandBlue);
-  background: linear-gradient(
-    180deg,
-    #ff59f8 0%,
-    #ae72ff 19.79%,
-    #90e9ed 40.62%,
-    #5cd167 61.98%,
-    #ffee00 82.53%
-  );
+  background: linear-gradient(180deg, #ff59f8 0%, #ae72ff 19.79%, #90e9ed 40.62%, #5cd167 61.98%, #ffee00 82.53%);
   padding: 1rem;
 }
 
@@ -169,14 +162,7 @@
 
 .fieldList::-webkit-scrollbar-thumb {
   background-color: var(--brandBlue);
-  background: linear-gradient(
-    90deg,
-    #ff59f8 0%,
-    #ae72ff 19.79%,
-    #90e9ed 40.62%,
-    #5cd167 61.98%,
-    #ffee00 82.53%
-  );
+  background: linear-gradient(90deg, #ff59f8 0%, #ae72ff 19.79%, #90e9ed 40.62%, #5cd167 61.98%, #ffee00 82.53%);
   padding: 0.5rem;
 }
 
@@ -189,4 +175,26 @@
   background: #111;
   width: 0.115rem;
   height: 0.115rem;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #131313;
+}
+
+.loadingIcon {
+  max-width: 2rem;
+  animation: rotate 1.5s cubic-bezier(0.7, 0, 0.3, 1) 0s infinite normal both;
+}
+
+@keyframes rotate {
+  0% {
+    rotate: z 0deg;
+  }
+
+  100% {
+    rotate: z 360deg;
+  }
 }

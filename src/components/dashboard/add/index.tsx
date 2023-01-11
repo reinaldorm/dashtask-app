@@ -1,17 +1,15 @@
 import React from 'react';
+import { DashboardContext, DashboardProps } from '../../../context/dashboard/context';
 import useTitle from '../../../hooks/useTitle';
 import styles from './css/add.module.css';
 
-interface Add {
-  setHeader: React.Dispatch<React.SetStateAction<1 | 2>>;
-}
-
-const Add = ({ setHeader }: Add) => {
-  React.useEffect(() => {
-    setHeader(2);
-  }, []);
-
+const Add = () => {
+  const { setSection } = React.useContext(DashboardContext) as DashboardProps;
   useTitle('Add');
+
+  React.useEffect(() => {
+    setSection('add');
+  }, []);
 
   return <div className={styles.add}>Add</div>;
 };

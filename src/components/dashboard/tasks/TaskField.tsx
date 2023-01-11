@@ -1,18 +1,25 @@
 import React from 'react';
 import { DataContext, DataProps } from '../../../context/data/context';
+import useCheckDate, { CheckDate } from '../../../hooks/useCheckDate';
 import FieldHeading from './FieldHeading';
 import FieldList from './FieldList';
-import Loading from '../../../pages/dashboard/Loading';
+import Loading from './Loading';
 import styles from './css/tasks.module.css';
-import useDate from '../../../hooks/useDate';
 
-const TodayField = () => {
-  const date = useDate();
+interface TaskFieldProps {
+  checker: keyof CheckDate;
+  legend: string;
+  date_label?: string;
+}
+
+const TaskField = ({ checker, legend, date_label }: TaskFieldProps) => {
   const { taskData } = React.useContext(DataContext) as DataProps;
-  const todayTasks = React.useMemo<Array<TaskInterface> | null>(() => {
+  const checkDate = useCheckDate();
+
+  const tasks = React.useMemo<Array<TaskInterface> | null>(() => {
     if (taskData.data) {
       return taskData.data.tasks.filter(({ task_final_date, task_status }) => {
-        return date.isSameDay(task_final_date) && !date.isOutdated(task_final_date) && task_status === 1;
+        return checkDate[checker](task_final_date) && task_status === 1;
       });
     } else {
       return null;
@@ -21,16 +28,16 @@ const TodayField = () => {
 
   return (
     <div className={styles.taskField}>
-      <FieldHeading legend='Today' />
+      <FieldHeading legend={legend} />
       {(taskData.loading && <Loading />) ||
-        (todayTasks && (
+        (tasks && (
           <FieldList
-            date_label='Today'
-            tasks={todayTasks}
+            date_label={date_label}
+            tasks={tasks}
           />
         ))}
     </div>
   );
 };
 
-export default TodayField;
+export default TaskField;

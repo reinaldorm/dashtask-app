@@ -27,7 +27,7 @@
   left: calc(50% - 12.5px);
   border-radius: 50%;
   top: calc(50% - 12.5px);
-  background: #0075ff;
+  background-color: #0075ff;
   z-index: 1;
 }
 
@@ -56,6 +56,25 @@
   font: 600 1rem 'Poppins';
   color: #fff;
   cursor: pointer;
+  z-index: 2;
+  transition: all 0.6s ease 0s;
+  width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.addTask img {
+  transition: all 0.6s ease 0s;
+  rotate: z 0deg;
+}
+
+.addTaskDark {
+  background: #131313;
+  width: 50px;
+}
+
+.addTaskDark img {
+  rotate: z 135deg;
 }
 
 .userMenu {
