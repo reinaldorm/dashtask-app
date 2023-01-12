@@ -12,32 +12,32 @@ import useTask from '../../../hooks/useTask';
 import styles from './css/add.module.css';
 import Loading from '../tasks/Loading';
 
-const AddForm = () => {
+interface AddFormProps {
+  task: NewTaskInterface;
+  setTask: React.Dispatch<React.SetStateAction<NewTaskInterface>>;
+}
+
+const AddForm = ({ task, setTask }: AddFormProps) => {
   const { db } = React.useContext(FirebaseContext) as FirebaseProps;
   const { user, userData, taskData } = React.useContext(DataContext) as DataProps;
   const { isOutOfDate } = useCheckDate();
   const { createTask, loading } = useTask(db, user.uid);
 
-  const [name, setName] = React.useState('');
-  const [level, setLevel] = React.useState<TaskLevel>(1);
-  const [date, setDate] = React.useState(Date.now());
-  const [tags, setTags] = React.useState<Array<TaskDefaultTags>>(['misc']);
-
-  React.useEffect(() => {}, [name, level, date, tags]);
+  React.useEffect(() => {}, [task.name, task.level, task.date, task.tags]);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (name && level && !isOutOfDate(date) && tags.length <= 3) {
+    if (task.name && task.level && !isOutOfDate(task.date) && task.tags.length <= 3) {
       try {
         await createTask({
-          task_name: name,
+          task_name: task.name,
           task_initial_date: Date.now(),
-          task_final_date: date,
+          task_final_date: task.date,
           task_custom_tags: [],
           task_id: uuid.v4(),
-          task_level: level,
+          task_level: task.level,
           task_status: 1,
-          task_tags: tags,
+          task_tags: task.tags,
         });
         await userData.getData();
         await taskData.getData();
@@ -57,20 +57,20 @@ const AddForm = () => {
         onSubmit={handleSubmit}
         className={styles.addForm}>
         <FormInput
-          name={name}
-          setName={setName}
+          setTask={setTask}
+          task={task}
         />
         <FormLevel
-          setLevel={setLevel}
-          level={level}
+          setTask={setTask}
+          task={task}
         />
         <FormDate
-          date={date}
-          setDate={setDate}
+          setTask={setTask}
+          task={task}
         />
         <FormTags
-          tags={tags}
-          setTags={setTags}
+          task={task}
+          setTask={setTask}
         />
         <FormSubmit />
       </form>

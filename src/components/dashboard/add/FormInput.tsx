@@ -3,19 +3,23 @@ import styles from './css/add.module.css';
 import FormHeading from './FormHeading';
 
 interface FormInputProps {
-  setName: React.Dispatch<React.SetStateAction<string>>;
-  name: string;
+  task: NewTaskInterface;
+  setTask: React.Dispatch<React.SetStateAction<NewTaskInterface>>;
 }
 
-const FormInput = ({ name, setName }: FormInputProps) => {
+const FormInput = ({ task, setTask }: FormInputProps) => {
+  const handleName = ({ currentTarget }: React.ChangeEvent<HTMLInputElement>) => {
+    setTask((task) => ({ ...task, name: currentTarget.value }));
+  };
+
   return (
     <div>
-      <FormHeading legend='Name' />
+      <FormHeading legend="Name" />
       <input
-        value={name}
+        value={task.name}
         className={styles.formInput}
-        placeholder='Enter your task name'
-        onChange={({ currentTarget }) => setName(currentTarget.value)}
+        placeholder="Enter your task name"
+        onChange={handleName}
       />
     </div>
   );

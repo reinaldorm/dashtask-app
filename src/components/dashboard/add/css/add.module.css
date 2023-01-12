@@ -15,6 +15,9 @@
 }
 
 .addPreview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex: 1;
 }
 
@@ -95,7 +98,8 @@
   cursor: pointer;
   padding: 0.5rem;
   border-radius: 0.25rem;
-  background: #232323 url('../../../../assets/sources/svg/icons/icon-calendar-light.svg') no-repeat center / 1rem;
+  background: #232323 url('../../../../assets/sources/svg/icons/icon-calendar-light.svg') no-repeat
+    center / 1rem;
   order: 1;
   display: block;
   transition: all 0.2s ease 0s;
@@ -140,7 +144,8 @@
 
 .tagItem::after {
   content: '';
-  background: #ff3d00ee url('../../../../assets/sources/svg/icons/icon-close.svg') no-repeat center / 1rem;
+  background: #ff3d00ee url('../../../../assets/sources/svg/icons/icon-close.svg') no-repeat center /
+    1rem;
   opacity: 0;
   z-index: 3;
   width: 100%;

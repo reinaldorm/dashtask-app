@@ -7,9 +7,10 @@ import TaskMenu from './TaskMenu';
 interface TaskProps {
   task: TaskInterface;
   date_label: string | undefined;
+  menu?: boolean;
 }
 
-const Task = ({ task, date_label }: TaskProps) => {
+const Task = ({ task, date_label, menu }: TaskProps) => {
   return (
     <div className={styles.task}>
       <TaskLevel level={task.task_level} />
@@ -17,7 +18,7 @@ const Task = ({ task, date_label }: TaskProps) => {
         task={task}
         date_label={date_label}
       />
-      <TaskMenu />
+      {menu ? null : <TaskMenu />}
     </div>
   );
 };

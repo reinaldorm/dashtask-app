@@ -2,24 +2,24 @@ import React from 'react';
 import styles from './css/add.module.css';
 
 interface LevelProps {
-  setLevel: React.Dispatch<React.SetStateAction<TaskLevel>>;
+  task: NewTaskInterface;
+  setTask: React.Dispatch<React.SetStateAction<NewTaskInterface>>;
   inputLevel: TaskLevel;
-  level: TaskLevel;
   style: string;
   legend: string;
 }
 
-const Level = ({ setLevel, inputLevel, level, style, legend }: LevelProps) => {
+const Level = ({ setTask, inputLevel, task, style, legend }: LevelProps) => {
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    if (level !== inputLevel) {
-      setLevel(inputLevel);
+    if (task.level !== inputLevel) {
+      setTask((task) => ({ ...task, level: inputLevel }));
     }
   };
 
   return (
     <button
-      className={level !== inputLevel ? styles.formLevel : `${style} ${styles.formLevel}`}
+      className={task.level !== inputLevel ? styles.formLevel : `${style} ${styles.formLevel}`}
       onClick={handleClick}>
       {legend}
     </button>

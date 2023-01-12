@@ -19,6 +19,13 @@ interface TaskCustomTags {
   color: string;
 }
 
+interface NewTaskInterface {
+  date: number;
+  tags: Array<TaskDefaultTags>;
+  name: string;
+  level: TaskLevel;
+}
+
 interface TaskInterface {
   task_initial_date: number;
   task_final_date: number;

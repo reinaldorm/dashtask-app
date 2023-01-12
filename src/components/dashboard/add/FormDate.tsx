@@ -4,29 +4,26 @@ import styles from './css/add.module.css';
 import useCheckDate from '../../../hooks/useCheckDate';
 
 interface FormDateProps {
-  setDate: React.Dispatch<React.SetStateAction<number>>;
-  date: number;
+  task: NewTaskInterface;
+  setTask: React.Dispatch<React.SetStateAction<NewTaskInterface>>;
 }
 
-const FormDate = ({ setDate }: FormDateProps) => {
+const FormDate = ({ setTask }: FormDateProps) => {
   const { isOutOfDate } = useCheckDate();
 
   const handleChange = ({ currentTarget }: ChangeEvent<HTMLInputElement>) => {
     const date = new Date(currentTarget.value).getTime();
 
-    if (!isOutOfDate(date)) {
-      setDate(date);
-    } else {
-    }
+    if (!isOutOfDate(date)) setTask((task) => ({ ...task, date }));
   };
 
   return (
     <div>
-      <FormHeading legend='Date' />
+      <FormHeading legend="Date" />
       <input
         onChange={handleChange}
         className={styles.formDateInput}
-        type='datetime-local'
+        type="datetime-local"
       />
     </div>
   );

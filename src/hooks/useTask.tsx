@@ -34,31 +34,7 @@ const useTask = (db: Firestore, uid: string) => {
     setLoading(false);
   };
 
-  const updateTask = async (id: string, newTask: TaskInterface) => {
-    setLoading(true);
-    try {
-      const docSnap = await getDoc(docRef);
-      const docData = docSnap.data() as unknown;
-
-      if (docSnap.exists() && isDocument(docData)) {
-        const { active } = docData;
-        active.forEach((task) => {
-          if (task.task_id === id) {
-            task = newTask;
-          }
-        });
-
-        updateDoc(docRef, {
-          active,
-        });
-      }
-    } catch (e) {
-      console.log('Something gone wrong:', e);
-    }
-    setLoading(false);
-  };
-
-  return { updateTask, createTask, loading };
+  return { createTask, loading };
 };
 
 export default useTask;

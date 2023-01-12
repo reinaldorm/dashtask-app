@@ -5,17 +5,17 @@ import styles from './css/add.module.css';
 import assets from '../../../assets/components/dashtask';
 
 interface FormTagsProps {
-  setTags: React.Dispatch<React.SetStateAction<TaskDefaultTags[]>>;
-  tags: TaskDefaultTags[];
+  task: NewTaskInterface;
+  setTask: React.Dispatch<React.SetStateAction<NewTaskInterface>>;
 }
 
-const FormTags = ({ setTags, tags }: FormTagsProps) => {
+const FormTags = ({ task, setTask }: FormTagsProps) => {
   return (
     <div>
-      <FormHeading legend='Tags' />
+      <FormHeading legend="Tags" />
       <TagList
-        setTags={setTags}
-        tags={tags}
+        setTask={setTask}
+        task={task}
       />
     </div>
   );

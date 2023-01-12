@@ -4,16 +4,16 @@ import TaskTag from '../tasks/TaskTag';
 import styles from './css/add.module.css';
 
 interface TagMenuProps {
-  setTags: React.Dispatch<React.SetStateAction<TaskDefaultTags[]>>;
   setMenu: React.Dispatch<React.SetStateAction<boolean>>;
-  tags: Array<TaskDefaultTags>;
+  setTask: React.Dispatch<React.SetStateAction<NewTaskInterface>>;
+  task: NewTaskInterface;
 }
 
-const TagMenu = ({ setTags, setMenu, tags }: TagMenuProps) => {
+const TagMenu = ({ setTask, setMenu, task }: TagMenuProps) => {
   const insetTag = (tag: TaskDefaultTags) => {
     setMenu(false);
-    if (tags.length < 3 && !tags.includes(tag)) {
-      setTags([...tags, tag]);
+    if (task.tags.length < 3 && !task.tags.includes(tag)) {
+      setTask((task) => ({ ...task, tags: [...task.tags, tag] }));
     }
   };
 

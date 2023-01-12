@@ -5,7 +5,7 @@ import styles from './css/debug.module.css';
 
 const Debug = () => {
   const { db } = React.useContext(FirebaseContext) as FirebaseProps;
-  const { updateTask } = useTask(db, 'a6d56scr0mU0BLWrOaqjSWKZcU73');
+  const {} = useTask(db, 'a6d56scr0mU0BLWrOaqjSWKZcU73');
 
   const handleDebug = () => {
     console.log('debug triggered');

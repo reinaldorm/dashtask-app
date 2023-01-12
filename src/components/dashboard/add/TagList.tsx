@@ -5,11 +5,11 @@ import assets from '../../../assets/components/dashtask';
 import styles from './css/add.module.css';
 
 interface TagListProps {
-  setTags: React.Dispatch<React.SetStateAction<TaskDefaultTags[]>>;
-  tags: Array<TaskDefaultTags>;
+  task: NewTaskInterface;
+  setTask: React.Dispatch<React.SetStateAction<NewTaskInterface>>;
 }
 
-const TagList = ({ setTags, tags }: TagListProps) => {
+const TagList = ({ setTask, task }: TagListProps) => {
   const [menu, setMenu] = React.useState(false);
 
   const handleMenu = (e: React.MouseEvent) => {
@@ -18,12 +18,12 @@ const TagList = ({ setTags, tags }: TagListProps) => {
   };
 
   const handleTag = (tag: TaskDefaultTags) => {
-    setTags((tags) => tags.filter((t) => t !== tag));
+    setTask((task) => ({ ...task, tags: task.tags.filter((t) => t !== tag) }));
   };
 
   return (
     <div className={styles.tagsList}>
-      {tags.map((tag) => (
+      {task.tags.map((tag) => (
         <button
           onClick={(e) => {
             e.preventDefault();
@@ -40,13 +40,13 @@ const TagList = ({ setTags, tags }: TagListProps) => {
         <img
           style={{ maxWidth: 16 }}
           src={assets.icons.add_circle}
-          alt='add-tag-icon'
+          alt="add-tag-icon"
         />
       </button>
       {menu && (
         <TagMenu
-          tags={tags}
-          setTags={setTags}
+          task={task}
+          setTask={setTask}
           setMenu={setMenu}
         />
       )}
