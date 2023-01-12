@@ -12,7 +12,7 @@ const TaskTag = ({ tag }: TaskTagProps) => {
   return (
     <span
       className={styles.taskTag}
-      style={{ color: tag.color, backgroundColor: `${tag.color}33` }}>
+      style={{ color: `${tag.color}`, backgroundColor: `${tag.color}33` }}>
       {tag.name}
     </span>
   );

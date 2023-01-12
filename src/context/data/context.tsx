@@ -1,6 +1,8 @@
 import React from 'react';
+import { User } from 'firebase/auth';
 
 export interface DataProps {
+  user: User;
   userData: {
     data: UserInterface | null;
     getData: () => Promise<void>;

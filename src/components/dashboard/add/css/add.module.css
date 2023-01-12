@@ -1,4 +1,199 @@
 .add {
+  padding: 3rem;
+
+  display: flex;
+
   grid-column: 2 / -1;
   grid-row: 2 / -1;
+}
+
+.addForm {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 2rem;
+}
+
+.addPreview {
+  flex: 1;
+}
+
+.formHeading {
+  display: flex;
+  gap: 0.625rem;
+  align-items: center;
+  cursor: pointer;
+}
+
+.formHeadingLegend {
+  font: 700 1.5rem 'Poppins';
+  color: #ffffff;
+}
+
+.formHeadingLine {
+  flex: 1;
+  background-color: #353535;
+  height: 1px;
+}
+
+.formInput {
+  font: 500 1rem 'Poppins';
+  color: white;
+  padding: 1rem 0rem;
+  border-bottom: 0.125rem solid #353535;
+  width: 100%;
+}
+
+.formInput::placeholder {
+  color: #353535;
+}
+
+.formLevelOptions {
+  padding: 1rem 0rem;
+  display: flex;
+  gap: 0.625rem;
+}
+
+.formLevel {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+  background: #1e1e1e;
+  color: #fff;
+  font: 500 1rem 'Poppins';
+  flex: 1;
+  transition: all 0.4s ease 0s;
+  cursor: pointer;
+}
+
+.formLevel:hover {
+  opacity: 0.75;
+}
+
+.levelLow {
+  background: #00ff75;
+  color: #005f2c;
+}
+
+.levelMid {
+  background: #ffe000;
+  color: #4e4600;
+}
+
+.levelHigh {
+  background: #ff3d00;
+  color: #fff;
+}
+
+.formDateInput {
+  color: #666;
+  font: 500 1rem 'Poppins';
+  padding: 1rem 0rem;
+  cursor: pointer;
+}
+
+::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  background: #232323 url('../../../../assets/sources/svg/icons/icon-calendar-light.svg') no-repeat center / 1rem;
+  order: 1;
+  display: block;
+  transition: all 0.2s ease 0s;
+}
+
+::-webkit-calendar-picker-indicator:hover {
+  opacity: 0.9;
+}
+
+.tagsList {
+  padding: 1rem 0rem;
+  display: flex;
+  gap: 0.625rem;
+  position: relative;
+}
+
+.tagItem {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.2s ease 0s;
+  animation: tagItem 0.4s ease-in-out 0s 1 normal both;
+}
+
+@keyframes tagItem {
+  0% {
+    filter: opacity(0);
+    translate: 0px 1rem 0px;
+  }
+
+  100% {
+    filter: opacity(1);
+    translate: 0px 0px 0px;
+  }
+}
+
+.tagItem:hover {
+  opacity: 0.9;
+}
+
+.tagItem::after {
+  content: '';
+  background: #ff3d00ee url('../../../../assets/sources/svg/icons/icon-close.svg') no-repeat center / 1rem;
+  opacity: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease 0s;
+}
+
+.tagItem:hover::after {
+  opacity: 1;
+}
+
+.tagMenu {
+  position: absolute;
+  top: 100%;
+  left: 0%;
+  background: #181818;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  z-index: 2;
+}
+
+.tagMenuTrigger {
+  cursor: pointer;
+  transition: all 0.2s ease 0s;
+}
+
+.tagMenuTrigger:hover {
+  opacity: 0.9;
+}
+
+.tagMenuItem {
+  cursor: pointer;
+}
+
+.formSubmit {
+  background: #0075ff;
+  border-radius: 0.25rem;
+  color: #fff;
+  padding: 0.625rem;
+  font: 600 1.25rem 'Poppins';
+  cursor: pointer;
+  transition: all 0.2s ease 0s;
+}
+
+.formSubmit:hover {
+  opacity: 0.9;
+}
+
+.formSubmit:active {
+  opacity: 0.75;
 }

@@ -12,8 +12,27 @@ function isDocument(value: any): value is UserTaskInterface {
 }
 
 const useTask = (db: Firestore, uid: string) => {
-  const [loading, setLoading] = React.useState(true);
+  const [loading, setLoading] = React.useState(false);
   const docRef = doc(db, 'users-tasks', uid);
+
+  const createTask = async (newTask: TaskInterface) => {
+    setLoading(true);
+    try {
+      const docSnap = await getDoc(docRef);
+      const docData = docSnap.data() as unknown;
+
+      if (docSnap.exists() && isDocument(docData)) {
+        const { active } = docData;
+        active.push(newTask);
+        updateDoc(docRef, {
+          active,
+        });
+      }
+    } catch (e) {
+      console.log('Something gone wrong:', e);
+    }
+    setLoading(false);
+  };
 
   const updateTask = async (id: string, newTask: TaskInterface) => {
     setLoading(true);
@@ -33,11 +52,13 @@ const useTask = (db: Firestore, uid: string) => {
           active,
         });
       }
-    } catch (e) {}
+    } catch (e) {
+      console.log('Something gone wrong:', e);
+    }
     setLoading(false);
   };
 
-  return { updateTask, loading };
+  return { updateTask, createTask, loading };
 };
 
 export default useTask;

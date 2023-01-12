@@ -87,11 +87,11 @@ const assets = {
       name: 'Health',
     },
     hobbie: {
-      color: 'ffe486',
+      color: '#ffe486',
       name: 'Hobbie',
     },
     misc: {
-      color: 'ca86ff',
+      color: '#ca86ff',
       name: 'Misc',
     },
   },
