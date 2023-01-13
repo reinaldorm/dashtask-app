@@ -1,5 +1,5 @@
 import React from 'react';
-import { doc, Firestore, getDoc } from 'firebase/firestore';
+import { doc, Firestore, getDoc, onSnapshot } from 'firebase/firestore';
 
 function isData<T>(value: any, check: string): value is T {
   if (check in value) {
@@ -17,10 +17,10 @@ function useData<T extends UserInterface | UserTaskInterface>(
 ) {
   const [data, setData] = React.useState<T | null>(null);
   const [loading, setLoading] = React.useState(true);
+  const docRef = doc(db, collection, uid);
 
   const getData = async () => {
     setLoading(true);
-    const docRef = doc(db, collection, uid);
     const docSnap = await getDoc(docRef);
     const docData = docSnap.data() as unknown;
     if (docSnap.exists() && isData<T>(docData, check)) {

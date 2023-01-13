@@ -6,8 +6,8 @@ import useTitle from '../../../hooks/useTitle';
 import styles from './css/tasks.module.css';
 
 const Tasks = () => {
-  const { taskData } = React.useContext(DataContext) as DataProps;
   const { setSection } = React.useContext(DashboardContext) as DashboardProps;
+  const { taskData } = React.useContext(DataContext) as DataProps;
   useTitle('Tasks');
 
   React.useEffect(() => {

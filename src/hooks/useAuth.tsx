@@ -1,5 +1,5 @@
-import { User } from 'firebase/auth';
 import React from 'react';
+import { User } from 'firebase/auth';
 import { FirebaseContext, FirebaseProps } from '../context/firebase/context';
 
 const useAuth = () => {
@@ -12,7 +12,6 @@ const useAuth = () => {
       setAuthenticating(true);
       if (user) {
         setUser(user);
-        console.log(user);
       } else {
         setUser(null);
       }

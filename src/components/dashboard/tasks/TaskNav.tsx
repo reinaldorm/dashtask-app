@@ -1,16 +1,35 @@
 import React from 'react';
 import assets from '../../../assets/components/dashtask';
+import { DataContext, DataProps } from '../../../context/data/context';
+import { FirebaseContext, FirebaseProps } from '../../../context/firebase/context';
+import useTask from '../../../hooks/useTask';
 import styles from './css/tasks.module.css';
 
-const TaskNav = () => {
-  const handleClick = (to: string) => {
-    console.log('menu item triggered');
+interface TaskNavProps {
+  task: TaskInterface;
+}
+
+const TaskNav = ({ task }: TaskNavProps) => {
+  const { db } = React.useContext(FirebaseContext) as FirebaseProps;
+  const { user, userData, taskData } = React.useContext(DataContext) as DataProps;
+  const { move, loading } = useTask(db, user.uid);
+
+  const handleMove = async (to: keyof UserTaskInterface) => {
+    try {
+      await move(task, 'active', to);
+      await userData.getData();
+      await taskData.getData();
+      console.log('task deleted');
+    } catch (e) {
+      console.log('Something went wrong: ', e);
+    }
   };
 
   return (
     <div className={styles.taskNav}>
       <button
-        onClick={() => handleClick('account')}
+        onClick={() => {}}
+        disabled={loading}
         className={styles.taskNavLink}>
         <img
           src={assets.icons.check}
@@ -19,7 +38,8 @@ const TaskNav = () => {
         Complete Task
       </button>
       <button
-        onClick={() => handleClick('settings')}
+        onClick={() => {}}
+        disabled={loading}
         className={styles.taskNavLink}>
         <img
           src={assets.icons.edit}
@@ -28,7 +48,8 @@ const TaskNav = () => {
         Edit Task
       </button>
       <button
-        onClick={() => handleClick('settings')}
+        onClick={() => handleMove('deleted')}
+        disabled={loading}
         className={styles.taskNavLink}>
         <img
           src={assets.icons.close}

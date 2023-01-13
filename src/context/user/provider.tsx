@@ -57,11 +57,7 @@ const UserProvider = ({ children }: UserProviderProps) => {
     navigate('/');
   };
 
-  return (
-    <Provider value={{ userSignUp, userSignIn, userSignOut, user, authenticating }}>
-      {children}
-    </Provider>
-  );
+  return <Provider value={{ userSignUp, userSignIn, userSignOut, user, authenticating }}>{children}</Provider>;
 };
 
 export default UserProvider;

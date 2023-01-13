@@ -3,7 +3,11 @@ import TaskNav from './TaskNav';
 import assets from '../../../assets/components/dashtask';
 import styles from './css/tasks.module.css';
 
-const TaskMenu = () => {
+interface TaskMenuProps {
+  task: TaskInterface;
+}
+
+const TaskMenu = ({ task }: TaskMenuProps) => {
   const [menu, setMenu] = React.useState(false);
 
   const handleOverOut = (config: boolean, handler: Element) => {
@@ -27,7 +31,7 @@ const TaskMenu = () => {
           alt='task-menu'
         />
       </button>
-      {menu && <TaskNav />}
+      {menu && <TaskNav task={task} />}
     </div>
   );
 };
