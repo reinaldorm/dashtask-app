@@ -16,12 +16,6 @@ interface NewTaskInterface {
   tags: Array<TaskDefaultTags>;
 }
 
-interface UserTasksInterface {
-  active: Array<TaskInterface>;
-  deleted: Array<TaskInterface>;
-  archived: Array<TaskInterface>;
-}
-
 interface TaskInterface {
   name: string;
   initial_date: number;
@@ -31,6 +25,12 @@ interface TaskInterface {
   level: TaskLevel;
   tags: Array<TaskDefaultTags>;
   custom_tags: Array<TaskCustomTags>;
+}
+
+interface UserTasksInterface {
+  active: Array<TaskInterface>;
+  deleted: Array<TaskInterface>;
+  archived: Array<TaskInterface>;
 }
 
 interface UserDataInterface {

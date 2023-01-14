@@ -1,9 +1,8 @@
 import React from 'react';
+import { auth } from '../firebase';
 import { User } from 'firebase/auth';
-import { FirebaseContext, FirebaseProps } from '../context/firebase/context';
 
 const useAuth = () => {
-  const { auth } = React.useContext(FirebaseContext) as FirebaseProps;
   const [user, setUser] = React.useState<User | null>(null);
   const [authenticating, setAuthenticating] = React.useState(true);
 

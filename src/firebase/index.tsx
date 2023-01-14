@@ -1,8 +1,6 @@
-import React from 'react';
 import { initializeApp } from 'firebase/app';
 import { browserLocalPersistence, getAuth, setPersistence } from 'firebase/auth';
-import { getFirestore, onSnapshot } from 'firebase/firestore';
-import Provider from './context';
+import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyATTRWeZdENsd3-Wb0bBVdQqah7IYBMKAw', // cspell:disable-line
@@ -14,16 +12,7 @@ const firebaseConfig = {
   measurementId: 'G-F1GQJYGF39', // cspell:disable-line
 };
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
+export const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
+export const db = getFirestore(app);
 setPersistence(auth, browserLocalPersistence);
-interface FirebaseProviderProps {
-  children: React.ReactNode;
-}
-
-const FirebaseProvider = ({ children }: FirebaseProviderProps) => {
-  return <Provider value={{ app, auth, db }}>{children}</Provider>;
-};
-
-export default FirebaseProvider;

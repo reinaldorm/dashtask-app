@@ -16,12 +16,12 @@ const TaskInfo = ({ task, date_label }: TaskInfoProps) => {
           src={assets.icons.calendar_light}
           alt='calendar-icon'
         />
-        {date_label || new Date(task.task_final_date).toString().slice(4, 10)}
+        {date_label || new Date(task.final_date).toString().slice(4, 10)}
       </p>
-      <h1 className={styles.taskInfoName}>{task.task_name}</h1>
+      <h1 className={styles.taskInfoName}>{task.name}</h1>
       <TaskInfoTags
-        custom_tags={task.task_custom_tags}
-        tags={task.task_tags}
+        custom_tags={task.custom_tags}
+        tags={task.tags}
       />
     </div>
   );

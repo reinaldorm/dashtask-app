@@ -1,34 +1,26 @@
-import { Firestore, updateDoc, setDoc, getDoc, doc } from 'firebase/firestore';
+import { updateDoc, doc, arrayUnion, arrayRemove, increment } from 'firebase/firestore';
+import { db } from '../firebase';
 import React from 'react';
 
 type Destination = keyof UserTasksInterface;
 
-const useTask = (db: Firestore, uid: string) => {
-  const [error, setError] = React.useState(false);
+const useTask = (uid: string) => {
   const [loading, setLoading] = React.useState(false);
-  const docRef = doc(db, 'users-tasks', uid);
+  const [error, setError] = React.useState<{ status: boolean; err: any }>({ status: false, err: null });
+  const docRef = doc(db, 'users', uid);
 
-  const readData = async () => {
-    const snapshot = await getDoc(docRef);
-    const data = snapshot.data() as unknown;
-
-    return data;
-  };
-
-  const move = async (task: TaskInterface, from: Destination, to: Destination) => {
+  const move = async (task: TaskInterface, _from: Destination, _to: Destination) => {
     setLoading(true);
+    const from = `tasks.${_from}`;
+    const to = `tasks.${_to}`;
     try {
-      const data = (await readData()) as UserDataInterface;
-
-      data.tasks[from] = data.tasks[from].filter(({ id }) => id !== task.id);
-      data.tasks[to].push(task);
-
       await updateDoc(docRef, {
-        tasks: { [from]: data.tasks[from], [to]: data.tasks[to] },
+        [from]: arrayRemove(task),
+        [to]: arrayUnion(task),
       });
-      setError(false);
+      setError({ status: false, err: null });
     } catch (e) {
-      setError(true);
+      setError({ status: true, err: e });
     }
     setLoading(false);
   };
@@ -36,15 +28,13 @@ const useTask = (db: Firestore, uid: string) => {
   const create = async (newTask: TaskInterface) => {
     setLoading(true);
     try {
-      const data = (await readData()) as UserDataInterface;
-
-      data.tasks.active.push(newTask);
       await updateDoc(docRef, {
-        tasks: { active: data.tasks.active },
+        'tasks.active': arrayUnion(newTask),
+        task_count: increment(1),
       });
-      setError(false);
+      setError({ status: false, err: null });
     } catch (e) {
-      setError(true);
+      setError({ status: true, err: e });
     }
     setLoading(false);
   };

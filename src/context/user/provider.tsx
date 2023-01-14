@@ -1,9 +1,8 @@
 import React from 'react';
-import * as uuid from 'uuid';
+import { db, auth } from '../../firebase';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
-import { FirebaseContext, FirebaseProps } from '../firebase/context';
 import useAuth from '../../hooks/useAuth';
 import Provider from './context';
 
@@ -12,7 +11,6 @@ interface UserProviderProps {
 }
 
 const UserProvider = ({ children }: UserProviderProps) => {
-  const { auth, db } = React.useContext(FirebaseContext) as FirebaseProps;
   const { user, authenticating } = useAuth();
   const navigate = useNavigate();
 
@@ -44,11 +42,7 @@ const UserProvider = ({ children }: UserProviderProps) => {
     navigate('/');
   };
 
-  return (
-    <Provider value={{ userSignUp, userSignIn, userSignOut, user, authenticating }}>
-      {children}
-    </Provider>
-  );
+  return <Provider value={{ userSignUp, userSignIn, userSignOut, user, authenticating }}>{children}</Provider>;
 };
 
 export default UserProvider;

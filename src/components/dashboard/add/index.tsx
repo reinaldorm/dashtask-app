@@ -1,7 +1,6 @@
 import React from 'react';
 import * as uuid from 'uuid';
 import { DashboardContext, DashboardProps } from '../../../context/dashboard/context';
-import { FirebaseContext, FirebaseProps } from '../../../context/firebase/context';
 import { DataContext, DataProps } from '../../../context/data/context';
 import AddInputs from './AddInputs';
 import AddPreview from './AddPreview';
@@ -12,9 +11,8 @@ import useTask from '../../../hooks/useTask';
 import styles from './css/add.module.css';
 
 const Add = () => {
-  const { db } = React.useContext(FirebaseContext) as FirebaseProps;
-  const { user, userData, taskData } = React.useContext(DataContext) as DataProps;
-  const { create } = useTask(db, user.uid);
+  const { user, userData } = React.useContext(DataContext) as DataProps;
+  const { create } = useTask(user.uid);
   const { isOutOfDate } = useCheckDate();
   const { setSection } = React.useContext(DashboardContext) as DashboardProps;
   const [loading, setLoading] = React.useState(false);
@@ -33,17 +31,16 @@ const Add = () => {
     if (task.name && task.level && !isOutOfDate(task.date) && task.tags.length <= 3 && task.tags.length > 0) {
       try {
         await create({
-          task_name: task.name,
-          task_initial_date: Date.now(),
-          task_final_date: task.date,
-          task_custom_tags: [],
-          task_id: uuid.v4(),
-          task_level: task.level,
-          task_status: 1,
-          task_tags: task.tags,
+          name: task.name,
+          initial_date: Date.now(),
+          final_date: task.date,
+          custom_tags: [],
+          id: uuid.v4(),
+          level: task.level,
+          status: 1,
+          tags: task.tags,
         });
         await userData.getData();
-        await taskData.getData();
       } catch (e) {
         console.log('Something went wrong:', e);
       }

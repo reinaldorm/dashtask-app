@@ -13,14 +13,14 @@ const AddPreview = ({ task }: AddPreviewProps) => {
         menu={true}
         date_label={undefined}
         task={{
-          task_name: task.name,
-          task_initial_date: Date.now(),
-          task_final_date: task.date,
-          task_level: task.level,
-          task_tags: task.tags,
-          task_id: '',
-          task_status: 1,
-          task_custom_tags: [],
+          name: task.name,
+          initial_date: Date.now(),
+          final_date: task.date,
+          level: task.level,
+          tags: task.tags,
+          id: '',
+          status: 1,
+          custom_tags: [],
         }}
       />
     </div>

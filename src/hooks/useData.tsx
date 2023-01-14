@@ -14,13 +14,19 @@ function useData(db: Firestore, uid: string) {
   const [loading, setLoading] = React.useState(true);
   const docRef = doc(db, 'users', uid);
 
+  const readData = async () => {
+    const snapshot = await getDoc(docRef);
+    const data = snapshot.data() as unknown;
+
+    return data;
+  };
+
   const getData = async () => {
     setLoading(true);
 
-    const docSnap = await getDoc(docRef);
-    const docData = docSnap.data() as unknown;
+    const data = await readData();
 
-    if (isData(docData)) setData(docData);
+    if (isData(data)) setData(data);
     else setData(null);
 
     setLoading(false);

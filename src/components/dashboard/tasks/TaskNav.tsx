@@ -1,7 +1,6 @@
 import React from 'react';
 import assets from '../../../assets/components/dashtask';
 import { DataContext, DataProps } from '../../../context/data/context';
-import { FirebaseContext, FirebaseProps } from '../../../context/firebase/context';
 import useTask from '../../../hooks/useTask';
 import styles from './css/tasks.module.css';
 
@@ -10,9 +9,8 @@ interface TaskNavProps {
 }
 
 const TaskNav = ({ task }: TaskNavProps) => {
-  const { db } = React.useContext(FirebaseContext) as FirebaseProps;
   const { user, userData } = React.useContext(DataContext) as DataProps;
-  const { move, loading } = useTask(db, user.uid);
+  const { move, loading } = useTask(user.uid);
 
   const handleMove = async (to: keyof UserTasksInterface) => {
     try {
@@ -32,7 +30,7 @@ const TaskNav = ({ task }: TaskNavProps) => {
         className={styles.taskNavLink}>
         <img
           src={assets.icons.check}
-          alt="user-icon"
+          alt='user-icon'
         />{' '}
         Complete Task
       </button>
@@ -42,7 +40,7 @@ const TaskNav = ({ task }: TaskNavProps) => {
         className={styles.taskNavLink}>
         <img
           src={assets.icons.edit}
-          alt="settings-icon"
+          alt='settings-icon'
         />{' '}
         Edit Task
       </button>
@@ -52,7 +50,7 @@ const TaskNav = ({ task }: TaskNavProps) => {
         className={styles.taskNavLink}>
         <img
           src={assets.icons.close}
-          alt="settings-icon"
+          alt='settings-icon'
         />{' '}
         Delete Task
       </button>
