@@ -28,7 +28,7 @@ const TaskMenu = ({ task }: TaskMenuProps) => {
       <button className={styles.taskMenuTrigger}>
         <img
           src={assets.icons.menu}
-          alt='task-menu'
+          alt="task-menu"
         />
       </button>
       {menu && <TaskNav task={task} />}

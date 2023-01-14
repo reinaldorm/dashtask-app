@@ -4,14 +4,9 @@ import { User } from 'firebase/auth';
 export interface DataProps {
   user: User;
   userData: {
-    data: UserInterface | null;
-    getData: () => Promise<void>;
+    data: UserDataInterface | null;
     loading: boolean;
-  };
-  taskData: {
-    data: UserTaskInterface | null;
     getData: () => Promise<void>;
-    loading: boolean;
   };
 }
 

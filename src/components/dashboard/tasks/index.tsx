@@ -7,12 +7,12 @@ import styles from './css/tasks.module.css';
 
 const Tasks = () => {
   const { setSection } = React.useContext(DashboardContext) as DashboardProps;
-  const { taskData } = React.useContext(DataContext) as DataProps;
+  const { userData } = React.useContext(DataContext) as DataProps;
   useTitle('Tasks');
 
   React.useEffect(() => {
-    if (taskData.data === null) {
-      taskData.getData();
+    if (userData.data === null) {
+      userData.getData();
     }
     setSection('tasks');
   }, []);

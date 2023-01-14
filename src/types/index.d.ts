@@ -1,15 +1,5 @@
-type DatabaseEndpoints = 'users' | 'users-tasks';
-
-// Levels
-// 1 - Low-Level-Task
-// 2 - Mid-Level-Task
-// 3 - High-Level-Task
 type TaskLevel = 1 | 2 | 3;
 
-// Status
-// 1 - Active
-// 2 - Archived
-// 3 - Deleted
 type TaskStatus = 1 | 2 | 3;
 
 type TaskDefaultTags = 'work' | 'study' | 'health' | 'hobbie' | 'misc';
@@ -20,32 +10,33 @@ interface TaskCustomTags {
 }
 
 interface NewTaskInterface {
-  date: number;
-  tags: Array<TaskDefaultTags>;
   name: string;
+  date: number;
   level: TaskLevel;
+  tags: Array<TaskDefaultTags>;
+}
+
+interface UserTasksInterface {
+  active: Array<TaskInterface>;
+  deleted: Array<TaskInterface>;
+  archived: Array<TaskInterface>;
 }
 
 interface TaskInterface {
-  task_initial_date: number;
-  task_final_date: number;
-  task_tags: Array<TaskDefaultTags>;
-  task_custom_tags: Array<TaskCustomTags>;
-  task_name: string;
-  task_status: TaskStatus;
-  task_level: TaskLevel;
-  task_id: string;
+  name: string;
+  initial_date: number;
+  final_date: number;
+  id: string;
+  status: TaskStatus;
+  level: TaskLevel;
+  tags: Array<TaskDefaultTags>;
+  custom_tags: Array<TaskCustomTags>;
 }
 
-interface UserInterface {
+interface UserDataInterface {
   username: string;
   email: string;
   task_count: number;
   custom_tags: Array<CustomTagsInterface>;
-}
-
-interface UserTaskInterface {
-  active: Array<TaskInterface>;
-  deleted: Array<TaskInterface>;
-  archived: Array<TaskInterface>;
+  tasks: UserTasksInterface;
 }

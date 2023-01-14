@@ -19,32 +19,19 @@ const UserProvider = ({ children }: UserProviderProps) => {
   const userSignUp = async (username: string, email: string, password: string) => {
     const { user } = await createUserWithEmailAndPassword(auth, email, password);
 
-    const userInfo: UserInterface = {
+    const userData: UserDataInterface = {
       username,
       email,
       task_count: 1,
       custom_tags: [],
+      tasks: {
+        active: [],
+        deleted: [],
+        archived: [],
+      },
     };
 
-    const userTask: UserTaskInterface = {
-      active: [
-        {
-          task_initial_date: Date.now(),
-          task_final_date: Date.now() + 8.64e7,
-          task_tags: ['work'],
-          task_custom_tags: [],
-          task_name: 'First Task',
-          task_status: 1,
-          task_level: 1,
-          task_id: uuid.v4(),
-        },
-      ],
-      deleted: [],
-      archived: [],
-    };
-
-    await setDoc(doc(db, 'users', user.uid), userInfo);
-    await setDoc(doc(db, 'users-tasks', user.uid), userTask);
+    await setDoc(doc(db, 'users', user.uid), userData);
   };
 
   const userSignIn = async (email: string, password: string) => {
@@ -57,7 +44,11 @@ const UserProvider = ({ children }: UserProviderProps) => {
     navigate('/');
   };
 
-  return <Provider value={{ userSignUp, userSignIn, userSignOut, user, authenticating }}>{children}</Provider>;
+  return (
+    <Provider value={{ userSignUp, userSignIn, userSignOut, user, authenticating }}>
+      {children}
+    </Provider>
+  );
 };
 
 export default UserProvider;
