@@ -5,6 +5,7 @@ export interface CheckDate {
   isTomorrow: (finalDate: number) => boolean;
   isSoon: (finalDate: number) => boolean;
   isOutOfDate: (finalDate: number) => boolean;
+  isBypassed: (finalDate: number) => boolean;
 }
 
 const useCheckDate = () => {
@@ -64,7 +65,9 @@ const useCheckDate = () => {
     }
   };
 
-  const hookReturn: CheckDate = { isToday, isTomorrow, isSoon, isOutOfDate };
+  const isBypassed = (finalDate: number) => true;
+
+  const hookReturn: CheckDate = { isToday, isTomorrow, isSoon, isOutOfDate, isBypassed };
 
   return hookReturn;
 };

@@ -1,4 +1,9 @@
 .archive {
+  padding: 3rem;
+
+  display: flex;
+  gap: 2rem;
+
   grid-column: 2 / -1;
   grid-row: 2 / -1;
 }
