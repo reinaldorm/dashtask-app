@@ -16,22 +16,27 @@ interface TaskFieldProps {
 
 const TaskField = ({ checker, legend, date_label, from, direction = 'row' }: TaskFieldProps) => {
   const { taskData } = React.useContext(DataContext) as DataProps;
+const TaskField = ({ checker, legend, date_label }: TaskFieldProps) => {
+  const { userData } = React.useContext(DataContext) as DataProps;
   const checkDate = useCheckDate();
 
   const tasks = React.useMemo<Array<TaskInterface> | null>(() => {
     if (taskData.data) {
       return taskData.data[from].filter(({ task_final_date }) => {
         return checkDate[checker](task_final_date);
+    if (userData.data) {
+      return userData.data.tasks.active.filter(({ final_date, status }) => {
+        return checkDate[checker](final_date) && status === 1;
       });
     } else {
       return null;
     }
-  }, [taskData.loading]);
+  }, [userData.loading]);
 
   return (
     <div className={styles.taskField}>
       <FieldHeading legend={legend} />
-      {(taskData.loading && <Loading />) ||
+      {(userData.loading && <Loading />) ||
         (tasks && (
           <FieldList
             direction={direction}
