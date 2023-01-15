@@ -6,7 +6,7 @@ export interface DataProps {
   userData: {
     data: UserDataInterface | null;
     loading: boolean;
-    getData: () => Promise<void>;
+    getData: () => Promise<UserDataInterface | null>;
   };
 }
 

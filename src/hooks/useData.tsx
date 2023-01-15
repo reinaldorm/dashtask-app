@@ -26,10 +26,15 @@ function useData(db: Firestore, uid: string) {
 
     const data = await readData();
 
-    if (isData(data)) setData(data);
-    else setData(null);
-
-    setLoading(false);
+    if (isData(data)) {
+      setData(data);
+      setLoading(false);
+      return data;
+    } else {
+      setLoading(false);
+      setData(null);
+      return null;
+    }
   };
 
   React.useEffect(() => {
