@@ -53,7 +53,7 @@ const AccountForm = ({ data }: AccountFormProps) => {
       password: '*************',
     }
   );
-
+  7;
   const handleEdit = () => {};
 
   return <div className={styles.accountForm}>AccountForm</div>;
