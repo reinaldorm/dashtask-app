@@ -8,6 +8,7 @@ import useInput from '../../../hooks/useInput';
 import styles from './css/signup.module.css';
 
 const FormInputs = () => {
+  const comp = React.useRef<HTMLFormElement | null>(null);
   const { userSignUp } = React.useContext(UserContext) as UserProps;
   const username = useInput({ type: 'username' });
   const email = useInput({ type: 'email' });
@@ -27,11 +28,21 @@ const FormInputs = () => {
   };
 
   React.useEffect(() => {
-    gsap.from('.' + styles.formInputs, { duration: 1, ease: 'power4.out', x: 50, opacity: 0 });
+    const tween = gsap.from(comp.current, {
+      duration: 1,
+      ease: 'power4.out',
+      x: 50,
+      opacity: 0,
+    });
+
+    return () => {
+      tween.revert();
+    };
   }, []);
 
   return (
     <form
+      ref={comp}
       onSubmit={handleSignUp}
       className={styles.formInputs}>
       <FormHeading />

@@ -11,9 +11,7 @@ const SignUp = () => {
   useTitle('Sign Up');
 
   React.useEffect(() => {
-    if (user) {
-      navigate('/dashboard');
-    }
+    if (user) navigate('/dashboard');
   }, [user]);
 
   return (

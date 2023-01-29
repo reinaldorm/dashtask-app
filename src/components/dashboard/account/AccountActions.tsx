@@ -1,7 +1,7 @@
 import React from 'react';
 
 const AccountActions = () => {
-  return <div>AccountActions</div>;
+  return <div></div>;
 };
 
 export default AccountActions;

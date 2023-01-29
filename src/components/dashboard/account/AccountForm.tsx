@@ -14,10 +14,6 @@ const AccountForm = ({ data }: AccountFormProps) => {
       <AccountField label="Password" />
     </div>
   );
-  7;
-  const handleEdit = () => {};
-
-  return <div className={styles.accountForm}>AccountForm</div>;
 };
 
 export default AccountForm;
